@@ -70,7 +70,7 @@ export default {
           type: 'LiveStream',
           target: document.querySelector('#videoWindow'),
           constraints: {
-            width: { min: 640 },
+            width: { min: 1000 },
             height: { min: 480 },
             facingMode: document.querySelector('#elements').value,
             aspectRatio: { min: 1, max: 2 },
