@@ -4,15 +4,6 @@
   </div>
 </template>
 
-<script>
-import LogRocket from 'logrocket'
-LogRocket.init('efrei/bibliotech')
-</script>
-
-<script>
-window.LogRocket && window.LogRocket.init('efrei/bibliotech')
-</script>
-
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',

@@ -19,6 +19,7 @@
     "dynamsoft-javascript-barcode": "^8.1.2",
     "logrocket": "^1.0.14",
     "nuxt": "^2.14.12",
+    "nuxt-logrocket": "^1.5.2",
     "quagga": "^0.12.1"
   },
   "devDependencies": {

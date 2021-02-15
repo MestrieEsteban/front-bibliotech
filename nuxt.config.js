@@ -41,10 +41,15 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['nuxt-logrocket'],
   /*
    ** Build configuration
    */
+
+  logRocket: {
+    logRocketId: 'efrei/bibliotech',
+    devModeAllowed: false,
+  },
   build: {
     /*
      ** You can extend webpack config here
