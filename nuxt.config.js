@@ -15,6 +15,12 @@ export default {
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        src:
+          '"https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"',
+      },
+    ],
   },
   /*
    ** Customize the progress-bar color

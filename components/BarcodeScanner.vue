@@ -46,7 +46,7 @@ export default {
       await this.scanner.setUIElement(this.$el)
       this.scanner.onFrameRead = (results) => {
         if (results.length) {
-          console.log(results)
+          window.console.log(results)
         }
       }
       this.scanner.onUnduplicatedRead = (txt, result) => {
@@ -60,7 +60,7 @@ export default {
       }
     } catch (ex) {
       this.$emit('appendMessage', ex.message)
-      console.error(ex)
+      window.console.error(ex)
     }
   },
   beforeDestroy() {

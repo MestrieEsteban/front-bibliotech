@@ -17,6 +17,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.3",
     "dynamsoft-javascript-barcode": "^8.1.2",
+    "logrocket": "^1.0.14",
     "nuxt": "^2.14.12",
     "quagga": "^0.12.1"
   },

@@ -81,7 +81,7 @@ export default {
         this.appendMessage('======== finish read ========')
       } catch (ex) {
         this.appendMessage(ex.message)
-        console.error(ex)
+        window.console.error(ex)
       }
     },
     showScanner() {
