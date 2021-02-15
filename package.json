@@ -20,6 +20,7 @@
     "quagga": "^0.12.1"
   },
   "devDependencies": {
+    "@ericblade/quagga2": "^1.2.6",
     "@nuxt/types": "~2.14.0",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
