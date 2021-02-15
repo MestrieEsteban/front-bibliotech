@@ -9,7 +9,11 @@
       </div>
     </div>
     <nav class="level" role="navigation" aria-label="main navigation">
-      <div v-show="!scannerActive" class="level-item">
+      <div>
+        <b-form-select v-model="selected" :options="options"></b-form-select>
+        <b-button variant="success" @click="launch = 'true'">Validate</b-button>
+      </div>
+      <div v-show="!scannerActive && launch" class="level-item">
         <a class="button" @click="start">Start Scanner</a>
       </div>
 
@@ -33,6 +37,12 @@ export default {
         code: '',
         type: '',
       },
+      selected: null,
+      options: [
+        { value: 'environment', text: 'environment' },
+        { value: 'user', text: 'user' },
+      ],
+      launch: false,
     }
   },
   mounted() {
