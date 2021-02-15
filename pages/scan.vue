@@ -55,11 +55,18 @@ export default {
           name: 'live',
           type: 'LiveStream',
           target: document.querySelector('#videoWindow'),
+          constraints: {
+            width: { min: 640 },
+            height: { min: 480 },
+            facingMode: 'environment',
+            aspectRatio: { min: 1, max: 2 },
+          },
         },
         decoder: {
           readers: ['ean_reader'],
           multiple: true,
         },
+        numOfWorkers: navigator.hardwareConcurrency,
         resolution: '1920px',
         locator: {
           halfSample: true,
