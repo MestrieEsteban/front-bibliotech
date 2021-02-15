@@ -12,14 +12,7 @@
         >
           Documentation
         </a>
-        <a
-          href="/scan"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <a href="/scan"> GitHub </a>
       </div>
     </div>
   </div>
