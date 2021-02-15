@@ -60,9 +60,10 @@ export default {
           readers: ['ean_reader'],
           multiple: true,
         },
+        resolution: '1920px',
         locator: {
           halfSample: true,
-          patchSize: 'medium',
+          patchSize: 'x-large',
         },
       }
       Quagga.init(config, (err) => {
