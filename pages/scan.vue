@@ -10,7 +10,11 @@
     </div>
     <nav class="level" role="navigation" aria-label="main navigation">
       <div>
-        <b-form-select v-model="selected" :options="options"></b-form-select>
+        <b-form-select
+          id="elements"
+          v-model="selected"
+          :options="options"
+        ></b-form-select>
         <b-button variant="success" @click="launch = 'true'">Validate</b-button>
       </div>
       <div v-show="!scannerActive && launch" class="level-item">
@@ -68,7 +72,7 @@ export default {
           constraints: {
             width: { min: 640 },
             height: { min: 480 },
-            facingMode: 'environment',
+            facingMode: document.querySelector('#elements').value,
             aspectRatio: { min: 1, max: 2 },
           },
         },
