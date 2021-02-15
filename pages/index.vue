@@ -13,7 +13,7 @@
           Documentation
         </a>
         <a
-          href="https://github.com/nuxt/nuxt.js"
+          href="/scan"
           target="_blank"
           rel="noopener noreferrer"
           class="button--grey"
