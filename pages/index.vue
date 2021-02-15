@@ -1,25 +1,17 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">bibliotech</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a href="/scan"> GitHub </a>
-      </div>
-    </div>
+  <div id="app">
+    <HelloWorld title="Welcome to DBRJS NUXTJS Example" />
   </div>
 </template>
 
 <script>
-export default {}
+import HelloWorld from '~/components/HelloWorld.vue'
+
+export default {
+  components: {
+    HelloWorld,
+  },
+}
 </script>
 
 <style>
