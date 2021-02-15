@@ -43,8 +43,8 @@ export default {
       },
       selected: null,
       options: [
-        { value: 'environment', text: 'back' },
-        { value: 'user', text: 'before' },
+        { value: 'environment', text: 'Back' },
+        { value: 'user', text: 'Before' },
       ],
       launch: false,
     }
