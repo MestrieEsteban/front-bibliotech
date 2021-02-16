@@ -50,6 +50,7 @@ export default {
     logRocketId: 'efrei/bibliotech',
     devModeAllowed: false,
   },
+
   build: {
     /*
      ** You can extend webpack config here
