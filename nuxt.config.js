@@ -41,7 +41,15 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['nuxt-logrocket'],
+  modules: [
+    'nuxt-logrocket',
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+  ],
+
+  bootstrapVue: {
+    icons: true
+  },
   /*
    ** Build configuration
    */
@@ -49,6 +57,10 @@ export default {
   logRocket: {
     logRocketId: 'efrei/bibliotech',
     devModeAllowed: false,
+  },
+
+  axios: {
+    baseURL: 'https://bibliotech-serveur.herokuapp.com/api/',
   },
 
   build: {
