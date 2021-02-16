@@ -1,3 +1,5 @@
+import { mdbFormInline } from 'mdbvue'
+
 export default {
   mode: 'universal',
   /*
@@ -45,7 +47,12 @@ export default {
     'nuxt-logrocket',
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
-    'mdbvue/nuxt',
+    [
+      'mdbvue/nuxt',
+      {
+        components: ['mdbIcon', 'mdbFormInline', 'mdb-footer'],
+      },
+    ],
   ],
 
   bootstrapVue: {

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-container>
+  <b-container fluid="xl">
+    <div v-if="book_user !== ''">
       <h1 id="title">My books</h1>
       <Search />
       <div id="container"></div>
@@ -10,16 +10,19 @@
           <p id="title_book">{{ item.title }}</p>
         </b-col>
       </b-row>
-    </b-container>
-  </div>
+      <BottomBar />
+    </div>
+  </b-container>
 </template>
 
 <script>
-import Search from '~/components/search.vue'
+import Search from '~/components/search'
+import BottomBar from '~/components/BottomBar'
 
 export default {
   components: {
     Search,
+    BottomBar,
   },
   data() {
     return {
