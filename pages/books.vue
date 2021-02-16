@@ -1,18 +1,22 @@
 <template>
-  <b-container fluid="xl">
+  <div>
+    <b-container>
+      <div v-if="book_user !== ''">
+        <h1 id="title">My books</h1>
+        <Search />
+        <div id="container"></div>
+        <b-row>
+          <b-col v-for="item in book_user" :key="item.id" col lg="1.5">
+            <div id="book"></div>
+            <p id="title_book">{{ item.title }}</p>
+          </b-col>
+        </b-row>
+      </div>
+    </b-container>
     <div v-if="book_user !== ''">
-      <h1 id="title">My books</h1>
-      <Search />
-      <div id="container"></div>
-      <b-row>
-        <b-col v-for="item in book_user" :key="item.id" col lg="1.5">
-          <div id="book"></div>
-          <p id="title_book">{{ item.title }}</p>
-        </b-col>
-      </b-row>
       <BottomBar />
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
