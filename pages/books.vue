@@ -76,6 +76,7 @@ export default {
 
 #title_book {
   font-size: 12px;
+  font-family: Abyssinica SIL;
 }
 
 #container {
