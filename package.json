@@ -15,12 +15,15 @@
     "@nuxtjs/pwa": "^3.3.5",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
+    "cookie": "^0.4.1",
     "core-js": "^3.8.3",
     "dynamsoft-javascript-barcode": "^8.1.2",
+    "js-cookie": "^2.2.1",
     "logrocket": "^1.0.14",
     "nuxt": "^2.14.12",
     "nuxt-logrocket": "^1.5.2",
-    "quagga": "^0.12.1"
+    "quagga": "^0.12.1",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@ericblade/quagga2": "^1.2.6",
