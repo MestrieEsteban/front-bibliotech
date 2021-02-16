@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HelloWorld title="Welcome to DBRJS NUXTJS Example" />
+    <HelloWorld title="Welcome to Scan book Produits" />
   </div>
 </template>
 
