@@ -45,10 +45,18 @@ export default {
     'nuxt-logrocket',
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
+    'mdbvue/nuxt',
   ],
 
   bootstrapVue: {
-    icons: true
+    icons: true,
+  },
+
+  mdbvue: {
+    icons: true, // FA5
+    roboto: false, // font Roboto
+    css: true, // MDB CSS
+    bootstrap: true, // Bootstrap CSS
   },
   /*
    ** Build configuration

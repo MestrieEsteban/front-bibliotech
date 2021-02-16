@@ -3,6 +3,7 @@
     <b-container>
       <h1 id="title">My books</h1>
       <Search />
+      <div id="container"></div>
       <b-row>
         <b-col v-for="item in book_user" :key="item.id" col lg="1.5">
           <div id="book"></div>
@@ -68,5 +69,9 @@ export default {
 
 #title_book {
   font-size: 12px;
+}
+
+#container {
+  margin-top: 10px;
 }
 </style>
