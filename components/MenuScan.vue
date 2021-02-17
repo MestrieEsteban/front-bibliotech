@@ -61,7 +61,9 @@ export default {
         ++this.messageKeyBase
         this.messages.splice(0, 1)
       }
-      window.location = `http://localhost:3000/books/infos?isbn=${this.messages}`
+      if (this.bShowScanner) {
+        window.location = `http://localhost:3000/books/infos?isbn=${this.messages}`
+      }
     },
     async onIptChange(event) {
       try {
@@ -80,7 +82,7 @@ export default {
         }
         input.value = ''
         this.appendMessage('======== finish read ========')
-
+        window.location = `http://localhost:3000/books/infos?isbn=${this.messages[2]}`
       } catch (ex) {
         this.appendMessage(ex.message)
 
