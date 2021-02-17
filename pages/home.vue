@@ -15,12 +15,11 @@
           <img src="@/assets/svg/reading-corner-colour_1.svg" />
         </div>
       </div>
-      <br />
       <Search />
       <h1 id="title">Last Books</h1>
       <vue-horizontal-list
         :items="book_user"
-        :options="{ responsive: [{ size: 0, height: 400 }] }"
+        :options="{ responsive: [{ size: 0 }] }"
       >
         <template #default="{ item }">
           <div
@@ -30,6 +29,7 @@
           <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
         </template>
       </vue-horizontal-list>
+      <br />
     </b-container>
     <BottomBar />
   </div>
