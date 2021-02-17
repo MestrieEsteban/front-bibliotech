@@ -22,7 +22,7 @@ export default {
 <style>
 #border_search {
   border-radius: 20px;
-  background-color: #f3f5f9;
+  background-color: #e5e5e5;
 }
 
 input {
@@ -32,7 +32,7 @@ input {
   vertical-align: middle;
   border: none;
   outline: none;
-  background-color: #f3f5f9;
+  background-color: #e5e5e5;
 }
 
 ::placeholder {
