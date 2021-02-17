@@ -1,10 +1,5 @@
 <template>
   <div>
-
-		<!--<span class='title'>Create account</span>-->
-    <span class='title'>Sing Up</span>
-		<br>
-    <div class="container">
       <span class="title">Create account</span>
       <br />
       <b-form v-if="show" method="post" @submit.prevent="register">
@@ -68,22 +63,27 @@
             placeholder="Enter password confirmation"
           >
           </b-form-input>
-
         </b-form-group>
         <b-alert v-model="passShow" variant="danger"
           >Password not match</b-alert
         >
 
-  		    <b-alert v-model="passShow" variant="danger">Password not match</b-alert>
+        <b-alert v-model="passShow" variant="danger"
+          >Password not match</b-alert
+        >
 
-        <div class="control1">  
+        <div class="control1">
           <div class="container flex">
-            <b-button type="submit" style="border:0px" class="btn-lg bg-white text-dark">Sign Up</b-button>
+            <b-button
+              type="submit"
+              style="border: 0px;"
+              class="btn-lg bg-white text-dark"
+              >Sign Up</b-button
+            >
           </div>
         </div>
       </b-form>
-    </div>
-
+  </div>
 </template>
 
 <script>
@@ -151,17 +151,17 @@ export default {
 </script>
 
 <style>
-  .title {
+.title {
   font-family: Abyyssinica SIL;
   display: block;
   font-size: 45px;
-  color: #34334B;
+  color: #34334b;
   letter-spacing: 1px;
   text-align: center;
   margin-top: 20px;
 }
 .control1 {
-  background: #FD8369;
+  background: #fd8369;
   position: absolute;
   padding-bottom: 70px;
   padding-top: 45px;
@@ -174,10 +174,9 @@ export default {
   border-radius: 20px 20px 0px 0px;
   margin-left: 0px;
 }
-.flex{
+.flex {
   font-family: Abyyssinica SIL;
   text-align: center;
   font-size: 10px;
-  
 }
 </style>
