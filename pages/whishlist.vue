@@ -35,7 +35,6 @@ export default {
   },
   data() {
     return {
-      id: 1,
       book: '',
       whist_book: '',
     }
@@ -46,12 +45,14 @@ export default {
   methods: {
     async getBook() {
       await this.$axios
-        .$get(`user/books/${this.id}`)
+        .$get(`user/books/${this.$store.state.user.user.id}`)
         .then((result) => {
           this.book = result.data.userbooks
-          for (let i = 0; this.book.length; i++) {
-            if (!result.data.userbooks[i].isBiblio) {
-              this.whist_book = result.data.userbooks[i].books
+          if(this.book.length > 0) {
+            for (let i = 0; this.book.length; i++) {
+              if (!this.book[i].isBiblio && this.book[i].books.length > 0) {
+                this.whist_book = this.book[i].books
+              }
             }
           }
         })

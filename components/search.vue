@@ -4,7 +4,13 @@
       <div id="espacement"></div>
       <mdbIcon id="icon_color" icon="search" />
       <div id="espacement_2"></div>
-      <input id="btn-search" type="text" placeholder="Search for books ..." />
+      <input
+        id="btn-search"
+        type="text"
+        placeholder="Search for books ..."
+        :value="msg"
+        @input="changeMessage"
+      />
     </mdb-form-inline>
   </div>
 </template>
@@ -15,6 +21,18 @@ export default {
   components: {
     mdbIcon,
     mdbFormInline,
+  },
+  props: ['msg'],
+  data() {
+    return {
+      message: '',
+    }
+  },
+  methods: {
+    changeMessage(event) {
+      this.message = event.target.value
+      this.$emit('messageChanged', this.message)
+    },
   },
 }
 </script>
@@ -41,7 +59,7 @@ input {
 }
 
 #icon_color {
-  background-color: #f3f5f9;
+  background-color: #e5e5e5;
 }
 
 #espacement {

@@ -27,7 +27,7 @@ const createStore = () => {
         if (req.headers.cookie) {
           const parsed = cookieparser.parse(req.headers.cookie)
           try {
-            auth = JSON.parse(parsed.auth)
+            auth = JSON.parse(parsed.vuex)
           } catch (err) {
             console.log(err)
           }
