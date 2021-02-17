@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="container">
       <span class="title">Reset Password</span>
       <br />
       <b-form method="post" @submit.prevent="sendMail">
@@ -32,7 +31,6 @@
         </div>
       </b-form>
     </div>
-  </div>
 </template>
 
 <script>
