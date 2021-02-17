@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-    this.getBook()``
+    this.getBook()
   },
   methods: {
     async getBook() {
