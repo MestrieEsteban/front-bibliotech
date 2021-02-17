@@ -94,7 +94,6 @@ export default {
   },
 }
 </script>
-<<<<<<< HEAD
 
 <style>
 .title {
@@ -133,5 +132,3 @@ export default {
   font-size: 30px;    
 }
 </style>
-=======
->>>>>>> eba752928d8e47083937667744951a883069c3d3
