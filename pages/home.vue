@@ -20,7 +20,7 @@
       <h1 id="title">Last Books</h1>
       <vue-horizontal-list
         :items="book_user"
-        :options="{ responsive: [{ size: 0 }] }"
+        :options="{ responsive: [{ size: 0, height: 400 }] }"
       >
         <template #default="{ item }">
           <div

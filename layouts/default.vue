@@ -24,9 +24,8 @@ html {
 }
 
 body {
-	  font-family: 'Abyssinica SIL', serif;
-	  background-color: #F3F5F9;
-
+  font-family: 'Abyssinica SIL', serif;
+  background-color: #f3f5f9;
 }
 
 .button--green {

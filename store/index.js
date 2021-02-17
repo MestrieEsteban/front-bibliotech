@@ -29,7 +29,7 @@ const createStore = () => {
           try {
             auth = JSON.parse(parsed.auth)
           } catch (err) {
-            console.log(err);
+            console.log(err)
           }
         }
         commit('setAuth', auth)

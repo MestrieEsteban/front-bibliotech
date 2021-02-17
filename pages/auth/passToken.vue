@@ -4,6 +4,8 @@
 		<!--<span class='title'>Password</span>-->
     <h2 class="display-4 text-center text-danger p-md-3">Password</h2>
 		<br>
+      <span class="title">Password</span>
+      <br />
       <b-form method="post" @submit.prevent="sendMail">
         <b-form-group
           id="input-group-1"
@@ -33,16 +35,16 @@ export default {
     }
   },
   methods: {
-    async sendMail(){
-		const data = {
+    async sendMail() {
+      const data = {
         password: this.password,
         resettoken: this.$route.query.token,
       }
-		const result = await this.$axios.post(`utils/passToken`, data)
-		if(result){
-			this.$router.push('/auth/login')
-		}
-	}
+      const result = await this.$axios.post(`utils/passToken`, data)
+      if (result) {
+        this.$router.push('/auth/login')
+      }
+    },
   },
 }
 </script>

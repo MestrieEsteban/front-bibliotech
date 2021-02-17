@@ -4,6 +4,9 @@
 		<!--<span class='title'>Create account</span>-->
     <span class='title'>Sing Up</span>
 		<br>
+    <div class="container">
+      <span class="title">Create account</span>
+      <br />
       <b-form v-if="show" method="post" @submit.prevent="register">
         <b-form-group
           id="input-group-1"
@@ -43,7 +46,7 @@
             id="input-3"
             v-model="password"
             type="password"
-			:state="chackPassword1"
+            :state="chackPassword1"
             name="password"
             required
             placeholder="Enter password"
@@ -59,7 +62,7 @@
             id="input-4"
             v-model="passwordConfirmation"
             type="password"
-			:state="chackPassword2"
+            :state="chackPassword2"
             name="passwordConfirmation"
             required
             placeholder="Enter password confirmation"
@@ -67,6 +70,9 @@
           </b-form-input>
 
         </b-form-group>
+        <b-alert v-model="passShow" variant="danger"
+          >Password not match</b-alert
+        >
 
   		    <b-alert v-model="passShow" variant="danger">Password not match</b-alert>
 
@@ -93,28 +99,28 @@ export default {
     }
   },
   computed: {
-      chackPassword1() {
-        return this.password.length > 0 ? true : false
-      },
-      chackPassword2() {
-        if(this.passwordConfirmation.length > 0){
-			if(this.password === this.passwordConfirmation){
-				this.passShow = false
-				return true
-			}else{
-				this.passShow = true
-				return false
-			}
-		}else{
-			return false
-		}
-      },
+    chackPassword1() {
+      return this.password.length > 0
     },
+    chackPassword2() {
+      if (this.passwordConfirmation.length > 0) {
+        if (this.password === this.passwordConfirmation) {
+          this.passShow = false
+          return true
+        } else {
+          this.passShow = true
+          return false
+        }
+      } else {
+        return false
+      }
+    },
+  },
   methods: {
     async register() {
       this.alert = null
       this.loading = true
-      this.$store
+      await this.$store
         .dispatch('register', {
           email: this.email,
           nickname: this.nickname,
@@ -122,7 +128,7 @@ export default {
           passwordConfirmation: this.passwordConfirmation,
         })
         .then((result) => {
-          console.log(result.data.message)
+          window.console.log(result.data.message)
           if (result.data.message) {
             alert(result.data.message)
             return
@@ -139,7 +145,7 @@ export default {
             }
           }
         })
-	},
+    },
   },
 }
 </script>
