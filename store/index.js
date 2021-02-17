@@ -29,7 +29,7 @@ const createStore = () => {
           try {
             auth = JSON.parse(parsed.auth)
           } catch (err) {
-            console.log(err);
+            window.console.log(err)
           }
         }
         commit('setAuth', auth)
@@ -44,7 +44,7 @@ const createStore = () => {
             })
             return response
           } catch (error) {
-            console.log(response)
+            window.console.log(response)
             return response
           }
         })
@@ -53,7 +53,7 @@ const createStore = () => {
         return api.auth
           .me()
           .then((response) => {
-            console.log(response)
+            window.console.log(response)
           })
           .catch((error) => {
             commit('reset_user')
@@ -76,7 +76,7 @@ const createStore = () => {
             })
             return response
           } catch (error) {
-            console.log(error)
+            window.console.log(error)
             return response
           }
         })
@@ -86,7 +86,7 @@ const createStore = () => {
           try {
             return response
           } catch (error) {
-            console.log(error)
+            window.console.log(error)
             return response
           }
         })

@@ -27,7 +27,7 @@
           >
           <b-button id="btn"><i class="fas fa-bookmark"></i>  Ajouter</b-button>
           <div v-if="book.sale != ''">
-            <b-button :href="book.sale" target="_blank" id="btn"
+            <b-button id="btn" :href="book.sale" target="_blank"
               ><i class="fas fa-shopping-cart"></i>  Acheter</b-button
             >
           </div>
@@ -67,12 +67,10 @@
 </template>
 
 <script>
-import Search from '~/components/search'
 import BottomBar from '~/components/BottomBar'
 
 export default {
   components: {
-    Search,
     BottomBar,
   },
   data() {
@@ -88,7 +86,7 @@ export default {
   },
   methods: {
     async getBook() {
-      const isbn = this.$route.query['isbn']
+      const isbn = this.$route.query.isbn
       await this.$axios
         .$get(`/books/search/${isbn}`)
         .then((result) => {
@@ -107,7 +105,7 @@ export default {
         .then((result) => {
           if (result.data.books) {
             this.bookAuthor = result.data.books
-            console.log(this.book)
+            window.console.log(this.book)
           }
         })
         .catch((error) => {

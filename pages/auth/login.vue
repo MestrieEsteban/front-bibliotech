@@ -2,8 +2,8 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-		<span class='title'>Connection</span>
-		<br>
+        <span class="title">Connection</span>
+        <br />
         <div class="column is-4 is-offset-4">
           <form method="post" @submit.prevent="login">
             <div class="field">
@@ -28,13 +28,21 @@
                 />
               </div>
             </div>
-			<br>
+            <br />
             <div class="control">
-              <b-button variant="primary" type="submit" class="button is-dark is-fullwidth">
+              <b-button
+                variant="primary"
+                type="submit"
+                class="button is-dark is-fullwidth"
+              >
                 Log In
               </b-button>
-              <b-button variant="danger" href="/auth/resetPassword" class="button is-dark is-fullwidth">
-				  Forgot password
+              <b-button
+                variant="danger"
+                href="/auth/resetPassword"
+                class="button is-dark is-fullwidth"
+              >
+                Forgot password
               </b-button>
             </div>
           </form>
@@ -48,8 +56,7 @@
 const Cookie = process.client ? require('js-cookie') : undefined
 export default {
   components: {},
-  transition: "intro",
-  
+  transition: 'intro',
 
   data() {
     return {
@@ -63,7 +70,7 @@ export default {
     async login() {
       this.alert = null
       this.loading = true
-      this.$store
+      await this.$store
         .dispatch('login', {
           email: this.email,
           password: this.password,
@@ -89,5 +96,3 @@ export default {
   },
 }
 </script>
-
-
