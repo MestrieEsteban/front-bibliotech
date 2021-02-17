@@ -33,7 +33,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    './api/init.js',
+    { src: '~/plugins/persistedState.client.js' },
+    { src: '~/plugins/persistedState.js' },
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -41,7 +45,24 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['nuxt-logrocket'],
+  modules: [
+    'nuxt-logrocket', 
+    'bootstrap-vue/nuxt', 
+    '@nuxtjs/axios', 
+    'mdbvue/nuxt',
+  ],
+
+bootstrapVue: {
+  icons: true,
+},
+
+mdbvue: {
+  icons: true, // FA5
+  roboto: false, // font Roboto
+  css: true, // MDB CSS
+  bootstrap: true, // Bootstrap CSS
+},
+
   /*
    ** Build configuration
    */
@@ -55,5 +76,11 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+    
   },
+
+  axios: {
+    baseURL: 'https://bibliotech-serveur.herokuapp.com/api/',
+},
+
 }

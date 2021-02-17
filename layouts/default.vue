@@ -4,6 +4,14 @@
   </div>
 </template>
 
+
+<script>
+import logoutMixin from '../mixins/logout'
+export default{
+	mixins: [logoutMixin],
+}
+</script>
+
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -53,3 +61,4 @@ html {
   background-color: #35495e;
 }
 </style>
+

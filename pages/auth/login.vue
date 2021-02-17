@@ -1,11 +1,12 @@
 <template>
   <section class="section">
-    <div class="container">
+    
       <div class="columns">
-		<span class='title'>Connection</span>
+    <span class='title'>Connection</span>
 		<br>
         <div class="column is-4 is-offset-4">
           <form method="post" @submit.prevent="login">
+            <div class="container">
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
@@ -28,19 +29,25 @@
                 />
               </div>
             </div>
-			<br>
-            <div class="control">
-              <b-button variant="primary" type="submit" class="button is-dark is-fullwidth">
-                Log In
-              </b-button>
-              <b-button variant="danger" href="/auth/resetPassword" class="button is-dark is-fullwidth">
-				  Forgot password
-              </b-button>
+            </div>
+			      <br>
+            <div class="control1">
+              <div class="container flex">
+                <b-button type="submit" class="btn btn-lg bg-white text-dark">
+                  Log In
+                </b-button>
+              </div>
+
+              <div class="container grid">
+                <b-button href="/auth/resetPassword" class="btn btn-lg bg-transparent border-0 text-white">
+                  Forgot password
+                </b-button>
+              </div>
             </div>
           </form>
         </div>
+        
       </div>
-    </div>
   </section>
 </template>
 
@@ -90,4 +97,44 @@ export default {
 }
 </script>
 
+<style>
 
+.title {
+  font-family: Abyyssinica SIL;
+  display: block;
+  font-size: 45px;
+  color: #34334B;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.control1 {
+  background: #FD8369;
+  position: fixed;
+  padding-bottom: 70px;
+  padding-top: 1px;
+  flex-wrap: wrap;
+  bottom: 0;
+  display: flex;
+  height: 150px;
+  width: 100%;
+  justify-content: space-around;
+  border-radius: 20px 20px 0px 0px;
+  margin-left: 0px;
+}
+
+.flex{
+  font-family: Abyyssinica SIL;
+  text-align: center;
+  font-size: 10px;
+  
+}
+
+.grid{
+  font-family: Abyyssinica SIL;
+  display: block;
+  text-align: center;
+  font-size: 30px;    
+}
+</style>

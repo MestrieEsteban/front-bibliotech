@@ -11,16 +11,24 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/pwa": "^3.3.5",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "bootstrap-css-only": "^4.4.1",
     "bootstrap-vue": "^2.21.2",
+    "chokidar": "^3.5.1",
+    "cookie-parser": "^1.4.5",
+    "cookieparser": "^0.1.0",
     "core-js": "^3.8.3",
     "dynamsoft-javascript-barcode": "^8.1.2",
+    "js-cookie": "^2.2.1",
     "logrocket": "^1.0.14",
+    "mdbvue": "^6.7.2",
     "nuxt": "^2.14.12",
     "nuxt-logrocket": "^1.5.2",
-    "quagga": "^0.12.1"
+    "quagga": "^0.12.1",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@ericblade/quagga2": "^1.2.6",
