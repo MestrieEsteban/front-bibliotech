@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <MenuScan title="Welcome to Scan book Produits" />
+      <MenuScan title="Scan book" />
     </b-container>
     <BottomBar />
   </div>

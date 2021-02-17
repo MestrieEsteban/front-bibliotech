@@ -23,9 +23,11 @@
           <i class="fas fa-bookmark"></i>
         </div>
       </a>
-      <div id="profil">
-        <i class="fas fa-user-circle"></i>
-      </div>
+	  <a href="/user/profile">
+		<div id="profil">
+			<i class="fas fa-user-circle"></i>
+		</div>
+	  </a>
     </div>
   </div>
 </template>

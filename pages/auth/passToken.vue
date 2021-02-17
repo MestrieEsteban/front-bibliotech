@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="container">
-		<span class='title'>Password</span>
+		<!--<span class='title'>Password</span>-->
+    <h2 class="display-4 text-center text-danger p-md-3">Password</h2>
 		<br>
       <b-form method="post" @submit.prevent="sendMail">
         <b-form-group
