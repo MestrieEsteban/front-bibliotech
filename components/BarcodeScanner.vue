@@ -7,7 +7,7 @@
     </svg>
     <svg
       class="dbrScanner-bg-camera"
-      style="display: none"
+      style="display: none;"
       viewBox="0 0 2048 1792"
     >
       <path
@@ -17,10 +17,11 @@
     <video class="dbrScanner-video" playsinline="true"></video>
     <canvas class="dbrScanner-cvs-drawarea"></canvas>
     <div class="dbrScanner-cvs-scanarea">
-      <div class="dbrScanner-scanlight" style="display: none"></div>
+      <div class="dbrScanner-scanlight" style="display: none;"></div>
     </div>
-    <select class="dbrScanner-sel-camera"></select>
-    <select class="dbrScanner-sel-resolution"></select>
+	<div>
+		<b-form-select class="dbrScanner-sel-camera"></b-form-select>
+	</div>
   </div>
 </template>
 
@@ -77,9 +78,9 @@ export default {
 .component-barcode-scanner {
   width: 100%;
   height: 100%;
-  min-width: 640px;
+  min-width: 100%;
   min-height: 480px;
-  background: #eee;
+  background: #F5F3F9;
   position: relative;
   resize: both;
 }

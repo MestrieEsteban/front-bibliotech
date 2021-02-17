@@ -26,13 +26,12 @@
             ><i class="fas fa-book-reader"></i>  Ajouter</b-button
           >
           <b-button id="btn"><i class="fas fa-bookmark"></i>  Ajouter</b-button>
-          <div v-if="book.sale != ''">
-            <b-button id="btn" :href="book.sale" target="_blank"
+          <div v-if="book.sale != null">
+            <b-button :href="book.sale" target="_blank" id="btn"
               ><i class="fas fa-shopping-cart"></i>  Acheter</b-button
             >
           </div>
         </b-row>
-
         <b-row id="center">
           <b-col style="text-align: center">
             <span id="description">{{ book.description }}</span>
@@ -41,7 +40,7 @@
 
         <b-row style="margin-top: 30px">
           <b-col style="text-align: left">
-            <span id="bta">By This Author</span>
+            <span id="bta" >By This Author</span>
           </b-col>
         </b-row>
         <b-row v-if="bookAuthor !== ''">
@@ -60,7 +59,11 @@
             </b-col>
           </b-div>
         </b-row>
-      </b-div>
+	  </b-div>
+      	<b-div v-else>
+		  No book found
+	  	</b-div>
+	  
     </b-container>
     <BottomBar />
   </div>

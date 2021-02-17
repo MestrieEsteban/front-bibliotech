@@ -1,22 +1,22 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
+    <h1 style="color:#34334B">{{ title }}</h1>
 
     <div v-if="!bShowScanner">
       <b-form-file
-        style="width: 28%; text-align: left"
+        style="width: 90%; text-align: left"
         placeholder="Choose image(s) to decode"
         drop-placeholder="Drop file here..."
         accept="image/png,image/jpeg,image/bmp,image/gif"
         @change="onIptChange"
       ></b-form-file>
-      <br /><br />
-      <b-button variant="primary" @click="showScanner">show scanner</b-button>
+	  <br />
+      <b-button class="btn-lg" style="background-color:#FD8369 !important; border:0px; color:#34334B; margin-top:120%" @click="showScanner"><i class="fas fa-camera-retro fa-2x"></i></b-button>
     </div>
 
     <div v-if="bShowScanner">
-      <b-button variant="primary" @click="hideScanner">hide scanner</b-button>
       <BarcodeScanner @appendMessage="appendMessage"></BarcodeScanner>
+	        <b-button class="btn-lg" style="background-color:#FD8369 !important; border:0px; color:#34334B;margin-top:11%" @click="hideScanner"><i class="fas fa-times-circle fa-2x"></i></b-button>
     </div>
 
     <!--<div ref="divMessage" class="div-message">
@@ -46,9 +46,6 @@ export default {
       bShowScanner: false,
     }
   },
-  updated() {
-    this.$refs.divMessage.scrollTop = this.$refs.divMessage.scrollHeight
-  },
   beforeDestroy() {
     if (this.reader) {
       this.reader.destroy()
@@ -62,7 +59,7 @@ export default {
         this.messages.splice(0, 1)
       }
       if (this.bShowScanner) {
-        window.location = `http://localhost:3000/books/infos?isbn=${this.messages}`
+        window.location = `http://localhost:3000/book/infos?isbn=${this.messages}`
       }
     },
     async onIptChange(event) {
@@ -82,7 +79,7 @@ export default {
         }
         input.value = ''
         this.appendMessage('======== finish read ========')
-        window.location = `http://localhost:3000/books/infos?isbn=${this.messages[2]}`
+        window.location = `http://localhost:3000/book/infos?isbn=${this.messages[2]}`
       } catch (ex) {
         this.appendMessage(ex.message)
 
