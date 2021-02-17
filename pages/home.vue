@@ -37,7 +37,7 @@
 
 <script>
 import VueHorizontalList from 'vue-horizontal-list'
-import Search from '~/components/search'
+import Search from '@/components/Search'
 import BottomBar from '~/components/BottomBar'
 
 export default {

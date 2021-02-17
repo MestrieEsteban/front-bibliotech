@@ -8,7 +8,7 @@
         id="btn-search"
         type="text"
         placeholder="Search for books ..."
-        :value="msg"
+        :value="search"
         @input="changeMessage"
       />
     </mdb-form-inline>
@@ -22,16 +22,16 @@ export default {
     mdbIcon,
     mdbFormInline,
   },
-  props: ['msg'],
+  props: ['search'],
   data() {
     return {
-      message: '',
+      term: '',
     }
   },
   methods: {
     changeMessage(event) {
-      this.message = event.target.value
-      this.$emit('messageChanged', this.message)
+      this.term = event.target.value
+      this.$emit('messageChanged', this.term)
     },
   },
 }
