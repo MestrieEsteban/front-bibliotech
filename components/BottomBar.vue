@@ -40,6 +40,7 @@
   border: 2px solid #fd8369;
   border-radius: 20px 20px 0px 0px;
   width: 100%;
+  height: 10%;
   display: inline-block;
   text-align: center;
 }

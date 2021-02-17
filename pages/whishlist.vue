@@ -35,17 +35,18 @@ export default {
   },
   data() {
     return {
+      id: 1,
       book: '',
       whist_book: '',
     }
   },
   mounted() {
-    this.getBook()
+    this.getBook()``
   },
   methods: {
     async getBook() {
       await this.$axios
-        .$get('user/books/1')
+        .$get(`user/books/${this.id}`)
         .then((result) => {
           this.book = result.data.userbooks
           for (let i = 0; this.book.length; i++) {

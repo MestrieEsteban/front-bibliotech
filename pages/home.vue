@@ -1,30 +1,42 @@
 <template>
   <div>
     <b-container>
-      <h1 id="title">My books</h1>
+      <div class="containers">
+        <div class="container_text">
+          <span>
+            <div id="text-color1">Good</div>
+            <div id="text-color2">{{ hour_time }}</div>
+            <!-- <div id="text-color3" v-if="$store.state.user !== ''">
+              {{ $store.state.user.user.nickname }}
+            </div>-->
+          </span>
+        </div>
+        <div class="container-image">
+          <img src="@/assets/svg/reading-corner-colour_1.svg" />
+        </div>
+      </div>
+      <br />
       <Search />
-      <div id="container"></div>
-      <b-row v-if="book_user !== ''">
-        <b-col
-          v-for="item in book_user"
-          id="cols-books"
-          :key="item.id"
-          col
-          lg="1.5"
-        >
+      <h1 id="title">Last Books</h1>
+      <vue-horizontal-list
+        :items="book_user"
+        :options="{ responsive: [{ size: 0 }] }"
+      >
+        <template #default="{ item }">
           <div
             id="book"
             :style="{ backgroundImage: 'url(' + item.cover + ')' }"
           ></div>
           <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
-        </b-col>
-      </b-row>
+        </template>
+      </vue-horizontal-list>
     </b-container>
     <BottomBar />
   </div>
 </template>
 
 <script>
+import VueHorizontalList from 'vue-horizontal-list'
 import Search from '~/components/search'
 import BottomBar from '~/components/BottomBar'
 
@@ -32,31 +44,40 @@ export default {
   components: {
     Search,
     BottomBar,
+    VueHorizontalList,
   },
   data() {
     return {
-      book: '',
-      book_user: '',
+      id: 1,
+      book_user: [],
+      hour_time: '',
     }
   },
   mounted() {
     this.getBook()
+    this.getDate()
   },
   methods: {
     async getBook() {
       await this.$axios
-        .$get('user/books/1')
+        .$get(`user/books/last/${this.id}`)
         .then((result) => {
-          this.book = result.data.userbooks
-          for (let i = 0; this.book.length; i++) {
-            if (result.data.userbooks[i].isBiblio) {
-              this.book_user = result.data.userbooks[i].books
-            }
-          }
+          this.book_user = result.data.userbookslast
         })
         .catch((error) => {
           window.console.log(error)
         })
+    },
+    getDate() {
+      const date = new Date()
+      const time = `${date.getHours()}`
+      if (time < 12) {
+        this.hour_time = 'Morning'
+      } else if (time >= 12 && time <= 17) {
+        this.hour_time = 'Afternoon'
+      } else if (time >= 17 && time <= 24) {
+        this.hour_time = 'Evening'
+      }
     },
   },
 }
@@ -72,7 +93,7 @@ export default {
   background-size: cover;
 }
 #title {
-  color: black;
+  color: #34334b;
   text-align: Left;
   font-size: 24px;
   margin-top: 20px;
@@ -82,11 +103,34 @@ export default {
   font-size: 12px;
 }
 
-#container {
-  margin-top: 10px;
+.containers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#cols-books {
-  margin-top: 10px;
+img {
+  max-width: 100%;
+}
+
+.container-image {
+  flex-basis: 40%;
+}
+
+.container_text {
+  font-size: 20px;
+  padding-left: 20px;
+  margin-right: 10%;
+}
+
+#text-color1,
+#text-color2 {
+  color: #28d063;
+  font-size: 15px;
+}
+
+#text-color3 {
+  color: #34334b;
+  font-size: 18px;
 }
 </style>
