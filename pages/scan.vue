@@ -1,18 +1,20 @@
 <template>
+  <div>
   <b-container>
-    <HelloWorld title="Welcome to Scan book Produits" />
-    <b-row>
-      <b-button variant="success" href="/books">Go to books</b-button>
-    </b-row>
+      <MenuScan title="Welcome to Scan book Produits" />
   </b-container>
+    <BottomBar />
+  </div>
 </template>
 
 <script>
-import HelloWorld from '~/components/HelloWorld.vue'
+import MenuScan from '@/components/MenuScan'
+import BottomBar from '~/components/BottomBar'
 
 export default {
   components: {
-    HelloWorld,
+    MenuScan,
+    BottomBar,
   },
 }
 </script>
@@ -21,7 +23,6 @@ export default {
 .container {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;

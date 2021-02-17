@@ -4,17 +4,23 @@
       <div id="home">
         <i class="fas fa-home"></i>
       </div>
-      <div id="book_btn">
-        <i class="fas fa-book-reader"></i>
-      </div>
-      <span id="scan">
-        <b-button id="btn_scan"
-          ><i id="icons-plus" class="fas fa-plus"></i
-        ></b-button>
-      </span>
-      <div id="whishlist">
-        <i class="fas fa-bookmark"></i>
-      </div>
+      <a href="/books">
+        <div id="book_btn">
+          <i class="fas fa-book-reader"></i>
+        </div>
+      </a>
+      <a href="/scan">
+        <span id="scan">
+          <b-button id="btn_scan"
+            ><i id="icons-plus" class="fas fa-plus"></i
+          ></b-button>
+        </span>
+      </a>
+      <a href="/whishlist">
+        <div id="whishlist">
+          <i class="fas fa-bookmark"></i>
+        </div>
+      </a>
       <div id="profil">
         <i class="fas fa-user-circle"></i>
       </div>
@@ -62,5 +68,10 @@
   border: 2px solid #fd8369;
   border-radius: 20px 20px 0px 0px;
   width: 18%;
+}
+
+a,
+a:hover {
+  color: black;
 }
 </style>
