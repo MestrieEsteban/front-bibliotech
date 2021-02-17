@@ -2,9 +2,11 @@
   <div>
     <b-container>
       <h1 id="title">My books</h1>
-      <Search :msg="term" @messageChanged="search($event)"></Search>
+      <div v-if="book_user !== ''">
+        <Search :msg="term" @messageChanged="search($event)"></Search>
+      </div>
       <div id="container"></div>
-      <b-row v-if="book_filter !== ''">
+      <b-row v-if="book_user !== ''">
         <b-col
           v-for="item in book_filter"
           id="cols-books"
@@ -53,7 +55,8 @@ export default {
           if (this.book.length > 0) {
             for (let i = 0; this.book.length; i++) {
               if (this.book[i].isBiblio && this.book[i].books.length > 0) {
-                this.book_user = result.data.userbooks[i].books
+                this.book_user =  this.book[i].books
+                this.book_filter = this.book[i].books
               }
             }
           }
@@ -63,14 +66,12 @@ export default {
         })
     },
     search(event) {
-      this.term = event.toLowerCase().trim()
-      if (this.term !== '') {
-        this.book_filter = this.book_user.filter((book) =>
-          book.title.toLowerCase().match(this.term.toLowerCase())
-        )
-      } else {
-        this.book_filter = this.book_user
-      }
+      this.term = event
+      this.term !== ''
+        ? (this.book_filter = this.book_user.filter((book) =>
+            book.title.toLowerCase().match(this.term.toLowerCase())
+          ))
+        : (this.book_filter = this.book_user)
     },
   },
 }

@@ -51,6 +51,7 @@ input {
   border: none;
   outline: none;
   background-color: #e5e5e5;
+  font-size: 12px;
 }
 
 ::placeholder {

@@ -2,11 +2,13 @@
   <div>
     <b-container>
       <h1 id="title">Wish Books</h1>
-      <Search />
+      <div v-if="whist_user !== ''">
+        <Search :msg="term" @messageChanged="search($event)"></Search>
+      </div>
       <div id="container"></div>
-      <b-row v-if="whist_book !== ''">
+      <b-row v-if="whist_user !== ''">
         <b-col
-          v-for="item in whist_book"
+          v-for="item in whist_filter"
           id="cols-books"
           :key="item.id"
           col
@@ -36,7 +38,9 @@ export default {
   data() {
     return {
       book: '',
-      whist_book: '',
+      whist_user: '',
+      whist_filter: '',
+      term: '',
     }
   },
   mounted() {
@@ -48,10 +52,11 @@ export default {
         .$get(`user/books/${this.$store.state.user.user.id}`)
         .then((result) => {
           this.book = result.data.userbooks
-          if(this.book.length > 0) {
+          if (this.book.length > 0) {
             for (let i = 0; this.book.length; i++) {
               if (!this.book[i].isBiblio && this.book[i].books.length > 0) {
-                this.whist_book = this.book[i].books
+                this.whist_user = this.book[i].books
+                this.whist_filter = this.book[i].books
               }
             }
           }
@@ -59,6 +64,14 @@ export default {
         .catch((error) => {
           window.console.log(error)
         })
+    },
+    search(event) {
+      this.term = event
+      this.term !== ''
+        ? (this.whist_filter = this.whist_user.filter((book) =>
+            book.title.toLowerCase().match(this.term.toLowerCase())
+          ))
+        : (this.whist_filter = this.whist_user)
     },
   },
 }
