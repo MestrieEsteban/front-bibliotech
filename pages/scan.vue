@@ -1,8 +1,8 @@
 <template>
   <div>
-  <b-container>
+    <b-container>
       <MenuScan title="Welcome to Scan book Produits" />
-  </b-container>
+    </b-container>
     <BottomBar />
   </div>
 </template>

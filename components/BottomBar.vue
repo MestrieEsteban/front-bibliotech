@@ -1,9 +1,11 @@
 <template>
   <div id="footer">
     <div id="bordures">
-      <div id="home">
-        <i class="fas fa-home"></i>
-      </div>
+      <a href="/home">
+        <div id="home">
+          <i class="fas fa-home"></i>
+        </div>
+      </a>
       <a href="/books">
         <div id="book_btn">
           <i class="fas fa-book-reader"></i>

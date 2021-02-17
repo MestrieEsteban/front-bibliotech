@@ -1,12 +1,12 @@
 <template>
   <div>
     <b-container>
-      <h1 id="title">Wish Books</h1>
+      <h1 id="title">My books</h1>
       <Search />
       <div id="container"></div>
-      <b-row v-if="whist_book !== ''">
+      <b-row v-if="book_user !== ''">
         <b-col
-          v-for="item in whist_book"
+          v-for="item in book_user"
           id="cols-books"
           :key="item.id"
           col
@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       book: '',
-      whist_book: '',
+      book_user: '',
     }
   },
   mounted() {
@@ -49,8 +49,8 @@ export default {
         .then((result) => {
           this.book = result.data.userbooks
           for (let i = 0; this.book.length; i++) {
-            if (!result.data.userbooks[i].isBiblio) {
-              this.whist_book = result.data.userbooks[i].books
+            if (result.data.userbooks[i].isBiblio) {
+              this.book_user = result.data.userbooks[i].books
             }
           }
         })
