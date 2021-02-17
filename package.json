@@ -12,15 +12,21 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/bootstrap-vue": "^2.0.4",
     "@nuxtjs/pwa": "^3.3.5",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
+    "cookie": "^0.4.1",
     "core-js": "^3.8.3",
     "dynamsoft-javascript-barcode": "^8.1.2",
+    "js-cookie": "^2.2.1",
     "logrocket": "^1.0.14",
+    "mdbvue": "^6.7.2",
     "nuxt": "^2.14.12",
     "nuxt-logrocket": "^1.5.2",
-    "quagga": "^0.12.1"
+    "quagga": "^0.12.1",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@ericblade/quagga2": "^1.2.6",
@@ -28,11 +34,16 @@
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "babel-eslint": "^10.1.0",
+    "cookieparser": "^0.1.0",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.5.0",
-    "prettier": "^2.2.1"
+    "fibers": "^5.0.0",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.7",
+    "sass-loader": "10",
+    "vuex": "^3.6.2"
   }
 }

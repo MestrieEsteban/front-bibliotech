@@ -1,3 +1,5 @@
+import { mdbFormInline } from 'mdbvue'
+
 export default {
   mode: 'universal',
   /*
@@ -41,7 +43,28 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['nuxt-logrocket'],
+  modules: [
+    'nuxt-logrocket',
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    [
+      'mdbvue/nuxt',
+      {
+        components: ['mdbIcon', 'mdbFormInline', 'mdb-footer'],
+      },
+    ],
+  ],
+
+  bootstrapVue: {
+    icons: true,
+  },
+
+  mdbvue: {
+    icons: true, // FA5
+    roboto: false, // font Roboto
+    css: true, // MDB CSS
+    bootstrap: true, // Bootstrap CSS
+  },
   /*
    ** Build configuration
    */
@@ -50,6 +73,11 @@ export default {
     logRocketId: 'efrei/bibliotech',
     devModeAllowed: false,
   },
+
+  axios: {
+    baseURL: 'https://bibliotech-serveur.herokuapp.com/api/',
+  },
+
   build: {
     /*
      ** You can extend webpack config here

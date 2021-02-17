@@ -1,7 +1,10 @@
 <template>
-  <div id="app">
+  <b-container>
     <HelloWorld title="Welcome to Scan book Produits" />
-  </div>
+    <b-row>
+      <b-button variant="success" href="/books">Go to books</b-button>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
