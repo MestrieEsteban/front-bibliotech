@@ -23,6 +23,12 @@ html {
   margin: 0;
 }
 
+body {
+	  font-family: 'Abyssinica SIL', serif;
+	  background-color: #F3F5F9;
+
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;
