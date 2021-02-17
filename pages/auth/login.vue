@@ -79,7 +79,7 @@ export default {
             return
           }
           this.loading = false
-          this.$router.push('/user/profile')
+          this.$router.push('/user/profil')
         })
         .catch((error) => {
           this.loading = false

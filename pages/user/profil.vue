@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <span class='title'>Profile</span>
+      <span class='title'>Profil</span>
 
         <span class='user'> 
           <b-div v-if="$store.state.user" right>
