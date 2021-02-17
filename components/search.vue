@@ -2,9 +2,9 @@
   <div id="border_search">
     <mdb-form-inline>
       <div id="espacement"></div>
-      <mdbIcon icon="search" id="icon_color"/>
+      <mdbIcon id="icon_color" icon="search" />
       <div id="espacement_2"></div>
-      <input id="btn-search" type="text" placeholder="Search for books .." />
+      <input id="btn-search" type="text" placeholder="Search for books ..." />
     </mdb-form-inline>
   </div>
 </template>
