@@ -3,27 +3,27 @@
     <h1>{{ title }}</h1>
 
     <div v-if="!bShowScanner">
-      Choose image(s) to decode:
-      <input
-        type="file"
-        multiple
+      <b-form-file
+        style="width: 28%; text-align: left"
+        placeholder="Choose image(s) to decode"
+        drop-placeholder="Drop file here..."
         accept="image/png,image/jpeg,image/bmp,image/gif"
         @change="onIptChange"
-      />
+      ></b-form-file>
       <br /><br />
-      <button @click="showScanner">show scanner</button>
+      <b-button variant="primary" @click="showScanner">show scanner</b-button>
     </div>
 
     <div v-if="bShowScanner">
-      <button @click="hideScanner">hide scanner</button>
+      <b-button variant="primary" @click="hideScanner">hide scanner</b-button>
       <BarcodeScanner @appendMessage="appendMessage"></BarcodeScanner>
     </div>
 
-    <div ref="divMessage" class="div-message">
+    <!--<div ref="divMessage" class="div-message">
       <p v-for="(message, index) of messages" :key="messageKeyBase + index">
         {{ message }}
       </p>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -61,6 +61,7 @@ export default {
         ++this.messageKeyBase
         this.messages.splice(0, 1)
       }
+      window.location = `http://localhost:3000/books/infos?isbn=${this.messages}`
     },
     async onIptChange(event) {
       try {
@@ -79,8 +80,10 @@ export default {
         }
         input.value = ''
         this.appendMessage('======== finish read ========')
+
       } catch (ex) {
         this.appendMessage(ex.message)
+
         window.console.error(ex)
       }
     },

@@ -50,7 +50,7 @@ export default {
         }
       }
       this.scanner.onUnduplicatedRead = (txt, result) => {
-        this.$emit('appendMessage', result.barcodeFormatString + ': ' + txt)
+        this.$emit('appendMessage', result.barcodeText)
       }
       await this.scanner.open()
 
