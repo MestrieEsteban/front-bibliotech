@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="color:#34334B">{{ title }}</h1>
+    <h1 style="color: #34334b">{{ title }}</h1>
 
     <div v-if="!bShowScanner">
       <b-form-file
@@ -10,13 +10,33 @@
         accept="image/png,image/jpeg,image/bmp,image/gif"
         @change="onIptChange"
       ></b-form-file>
-	  <br />
-      <b-button class="btn-lg" style="background-color:#FD8369 !important; border:0px; color:#34334B; margin-top:120%" @click="showScanner"><i class="fas fa-camera-retro fa-2x"></i></b-button>
+      <br />
+      <b-button
+        class="btn-lg"
+        style="
+          background-color: #fd8369 !important;
+          border: 0px;
+          color: #34334b;
+          margin-top: 120%;
+        "
+        @click="showScanner"
+        ><i class="fas fa-camera-retro fa-2x"></i
+      ></b-button>
     </div>
 
     <div v-if="bShowScanner">
       <BarcodeScanner @appendMessage="appendMessage"></BarcodeScanner>
-	        <b-button class="btn-lg" style="background-color:#FD8369 !important; border:0px; color:#34334B;margin-top:11%" @click="hideScanner"><i class="fas fa-times-circle fa-2x"></i></b-button>
+      <b-button
+        class="btn-lg"
+        style="
+          background-color: #fd8369 !important;
+          border: 0px;
+          color: #34334b;
+          margin-top: 11%;
+        "
+        @click="hideScanner"
+        ><i class="fas fa-times-circle fa-2x"></i
+      ></b-button>
     </div>
 
     <!--<div ref="divMessage" class="div-message">
@@ -36,7 +56,10 @@ export default {
     BarcodeScanner,
   },
   props: {
-    title: String,
+    title: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {

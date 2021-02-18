@@ -16,16 +16,17 @@
               Register
             </b-button>-->
         <div class="container flex">
-          <b-button href="/auth/login" style="border:0px" class=" btn-lg bg-white text-dark">
+          <b-button
+            href="/auth/login"
+            style="border: 0px"
+            class="btn-lg bg-white text-dark"
+          >
             Sign In
           </b-button>
         </div>
 
         <div class="container grid">
-          <a
-            href="/auth/register"
-            style='color: #F3F5F9; font-size:15px'
-          >
+          <a href="/auth/register" style="color: #f3f5f9; font-size: 15px">
             Create an account
           </a>
         </div>

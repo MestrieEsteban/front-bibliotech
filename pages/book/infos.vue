@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <div v-if="LoadBook == 'ok'">
+      <div v-if="LoadBook === 'ok'">
         <b-row id="center">
           <b-col cols="*">
             <div
@@ -38,13 +38,13 @@
           </div>
         </b-row>
         <b-row id="center">
-          <b-col style="text-align: center;">
+          <b-col style="text-align: center">
             <span id="description">{{ book.description }}</span>
           </b-col>
         </b-row>
 
-        <b-row style="margin-top: 30px;">
-          <b-col style="text-align: left;">
+        <b-row style="margin-top: 30px">
+          <b-col style="text-align: left">
             <span id="bta">By This Author</span>
           </b-col>
         </b-row>
@@ -65,14 +65,14 @@
           </div>
         </b-row>
       </div>
-      <div v-if="LoadBook == 'loading'">
+      <div v-if="LoadBook === 'loading'">
         <div>
           <b-spinner class="m-5" label="Busy"></b-spinner>
         </div>
       </div>
-      <div v-if="LoadBook == 'noBook'">
+      <div v-if="LoadBook === 'noBook'">
         <div class="m-5">
-          <span style="font-size: 30px; color: #34334b !important;"
+          <span style="font-size: 30px; color: #34334b !important"
             >No book found</span
           >
         </div>

@@ -53,33 +53,29 @@ export default {
 		'@nuxtjs/pwa',
 	],
 
-	bootstrapVue: {
-		icons: true,
-	},
+  mdbvue: {
+    icons: true, // FA5
+    roboto: false, // font Roboto
+    css: true, // MDB CSS
+    bootstrap: true, // Bootstrap CSS
+  },
+  /*
+   ** Build configuration
+   */
 
-	mdbvue: {
-		icons: true, // FA5
-		roboto: false, // font Roboto
-		css: true, // MDB CSS
-		bootstrap: true, // Bootstrap CSS
-	},
-	/*
-	 ** Build configuration
-	 */
+  logRocket: {
+    logRocketId: 'efrei/bibliotech',
+    devModeAllowed: false,
+  },
 
-	logRocket: {
-		logRocketId: 'efrei/bibliotech',
-		devModeAllowed: false,
-	},
+  axios: {
+    baseURL: 'https://bibliotech-serveur.herokuapp.com/api/',
+  },
 
-	axios: {
-		baseURL: 'https://bibliotech-serveur.herokuapp.com/api/',
-	},
-
-	build: {
-		/*
-		 ** You can extend webpack config here
-		 */
-		extend(config, ctx) { },
-	},
+  build: {
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {},
+  },
 }

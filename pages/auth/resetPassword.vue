@@ -1,36 +1,36 @@
 <template>
   <div>
-      <span class="title">Reset Password</span>
-      <br />
-      <b-form method="post" @submit.prevent="sendMail">
-        <b-form-group
-          id="input-group-1"
-          label="Email address:"
-          label-for="input-1"
-        >
-          <b-form-input
-            id="input-1"
-            v-model="email"
-            type="email"
-            name="email"
-            required
-            placeholder="Enter email"
-          ></b-form-input>
-        </b-form-group>
+    <span class="title">Reset Password</span>
+    <br />
+    <b-form method="post" @submit.prevent="sendMail">
+      <b-form-group
+        id="input-group-1"
+        label="Email address:"
+        label-for="input-1"
+      >
+        <b-form-input
+          id="input-1"
+          v-model="email"
+          type="email"
+          name="email"
+          required
+          placeholder="Enter email"
+        ></b-form-input>
+      </b-form-group>
 
-        <div class="control1">
-          <div class="container flex">
-            <b-button
-              type="submit"
-              style="border: 0px;"
-              class="btn-lg bg-white text-dark"
-            >
-              Send
-            </b-button>
-          </div>
+      <div class="control1">
+        <div class="container flex">
+          <b-button
+            type="submit"
+            style="border: 0px"
+            class="btn-lg bg-white text-dark"
+          >
+            Send
+          </b-button>
         </div>
-      </b-form>
-    </div>
+      </div>
+    </b-form>
+  </div>
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
       const data = {
         email: this.email,
       }
-      const result = await this.$axios.post(`utils/resetpassword`, data)
+      await this.$axios.post(`utils/resetpassword`, data)
     },
   },
 }

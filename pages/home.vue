@@ -6,7 +6,7 @@
           <span>
             <div id="text-color1">Good</div>
             <div id="text-color2">{{ hour_time }}</div>
-            <div id="text-color3" v-if="$store.state.user !== ''">
+            <div v-if="$store.state.user !== ''" id="text-color3">
               {{ $store.state.user.user.nickname }}
             </div>
           </span>
@@ -18,7 +18,7 @@
       <Search />
       <h1 id="title">Last Books</h1>
       <b-row>
-        <div style="max-width: 90%; margin-left: 15px;">
+        <div style="max-width: 90%; margin-left: 15px">
           <vue-horizontal-list
             :items="book_user"
             :options="{ responsive: [{ size: 0 }] }"

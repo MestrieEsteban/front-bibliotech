@@ -1,32 +1,36 @@
 <template>
   <div>
-		<br>
-      <span class="title">Password</span>
-      <br />
-      <b-form method="post" @submit.prevent="sendMail">
-        <b-form-group
-          id="input-group-1"
-          label="New password :"
-          label-for="input-1"
-        >
-          <b-form-input
-            id="input-1"
-            v-model="password"
-            type="password"
-            name="password"
-            required
-            placeholder="Enter password"
-          ></b-form-input>
-        </b-form-group>
-        <div class="control1">
-          <div class="container flex">
-            <b-button type="submit" style="border: 0px;" class="btn-lg bg-white text-dark">
-              Send
-            </b-button>
-          </div>
+    <br />
+    <span class="title">Password</span>
+    <br />
+    <b-form method="post" @submit.prevent="sendMail">
+      <b-form-group
+        id="input-group-1"
+        label="New password :"
+        label-for="input-1"
+      >
+        <b-form-input
+          id="input-1"
+          v-model="password"
+          type="password"
+          name="password"
+          required
+          placeholder="Enter password"
+        ></b-form-input>
+      </b-form-group>
+      <div class="control1">
+        <div class="container flex">
+          <b-button
+            type="submit"
+            style="border: 0px"
+            class="btn-lg bg-white text-dark"
+          >
+            Send
+          </b-button>
         </div>
-      </b-form>
-    </div>
+      </div>
+    </b-form>
+  </div>
 </template>
 
 <script>
