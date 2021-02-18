@@ -18,7 +18,7 @@
       <Search />
       <h1 id="title">Last Books</h1>
       <b-row>
-        <div style="max-width: 90%; margin-left: 15px">
+        <div style="max-width: 90%; margin-left: 15px;">
           <vue-horizontal-list
             :items="book_user"
             :options="{ responsive: [{ size: 0 }] }"
@@ -45,13 +45,17 @@
 import VueHorizontalList from 'vue-horizontal-list'
 import Search from '@/components/Search'
 import BottomBar from '@/components/BottomBar'
+import redirect from '../../mixins/redirectLogin'
 
 export default {
+  mixins: [redirect],
+
   components: {
     Search,
     BottomBar,
     VueHorizontalList,
   },
+
   data() {
     return {
       book_user: [],
