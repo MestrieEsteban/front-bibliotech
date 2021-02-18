@@ -52,12 +52,10 @@ export default {
         .$get(`user/books/${this.$store.state.user.user.id}`)
         .then((result) => {
           this.book = result.data.userbooks
-          if (this.book.length > 0) {
-            for (let i = 0; this.book.length; i++) {
-              if (!this.book[i].isBiblio && this.book[i].books.length > 0) {
-                this.whist_user = this.book[i].books
-                this.whist_filter = this.book[i].books
-              }
+          for (let i = 0; i < this.book.length; i++) {
+            if (!this.book[i].isBiblio && this.book[i].books.length > 0) {
+              this.whist_user = this.book[i].books
+              this.whist_filter = this.book[i].books
             }
           }
         })
