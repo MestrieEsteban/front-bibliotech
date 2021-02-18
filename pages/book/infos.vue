@@ -42,6 +42,9 @@
             <span id="description">{{ book.description }}</span>
           </b-col>
         </b-row>
+
+        <Maps/>
+
         <b-row style="margin-top: 30px">
           <b-col style="text-align: left">
             <span id="bta">By This Author</span>
@@ -84,10 +87,11 @@
 <script>
 import redirect from '../../mixins/redirectLogin'
 import BottomBar from '~/components/BottomBar'
+import Maps from '~/components/Maps'
 
 export default {
   components: {
-    BottomBar,
+    BottomBar,Maps
   },
   mixins: [redirect],
   data() {
@@ -97,7 +101,7 @@ export default {
       LoadBook: 'loading',
       bookAuthor: '',
       book_user: '',
-    }
+      }
   },
   mounted() {
     this.getAuthor()
