@@ -46,8 +46,10 @@ export default {
         password: this.password,
         resettoken: this.$route.query.token,
       }
-      const result = await this.$axios.post(`utils/passToken`, data)
+      const result = await this.$axios.post(`auth/passwordToken`, data)
+      console.log (result)
       if (result) {
+
         this.$router.push('/auth/login')
       }
     },
