@@ -31,12 +31,11 @@ import BottomBar from '@/components/BottomBar'
 import redirect from '../../mixins/redirectLogin'
 
 export default {
-  mixins: [redirect],
-
   components: {
     Search,
     BottomBar,
   },
+  mixins: [redirect],
   data() {
     return {
       book: '',

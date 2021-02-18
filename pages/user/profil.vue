@@ -3,26 +3,42 @@
     <b-container>
       <div class="user">
         <b-avatar
+          ref="pictureInput"
           variant="info"
-          src="https://placekitten.com/300/300"
+          :src="image_profil"
           size="5.5rem"
-          style="border: 2px solid #34334b;"
-        ></b-avatar>
+          style="border: 2px solid #34334b"
+          :button="true"
+          button-type="submit"
+          @click="addImage"
+        >
+        </b-avatar>
+        <br />
+        <input
+          id="upload"
+          ref="file"
+          type="file"
+          placeholder="Choose a file or drop it here..."
+          style="display: none"
+          multiple=""
+          accept="image/jpeg, image/png"
+          @change="ImageChange($event)"
+        />
         <br />
         <div v-if="$store.state.user" right>
-          <span style="color: #34334b !important; font-size: 25px;">{{
+          <span style="color: #34334b !important; font-size: 25px">{{
             $store.state.user.user.nickname
           }}</span>
         </div>
         <br />
         <b-img
-          src="../../assets/svg/undraw_Bibliophile_hwqc_1.svg"
+          src="@/assets/svg/undraw_Bibliophile_hwqc_1.svg"
           fluid
-          style="width: 280px;"
+          style="width: 280px"
           alt="Responsive image"
         ></b-img>
         <br />
-        <span style="color: #34334b !important; font-size: 4.5vw;"
+        <span style="color: #34334b !important; font-size: 4.5vw"
           >{{ countBook }} {{ countBook > 0 ? 'Books' : 'Book' }}</span
         >
       </div>
@@ -56,13 +72,15 @@
             required
           >
           </b-form-input>
-          <br />
           <div class="user">
             <b-button
               style="
                 background-color: #fd8369 !important;
                 border: 0;
                 color: #34334b;
+                height: 5%;
+                width: 50%;
+                font-size: 12px;
               "
               @click="EditUser"
               >Edit user</b-button
@@ -71,20 +89,21 @@
         </b-form-group>
       </b-form>
     </b-container>
+    <br />
+    <br />
     <BottomBar />
   </div>
 </template>
 
 <script>
-import BottomBar from '~/components/BottomBar'
 import redirect from '../../mixins/redirectLogin'
+import BottomBar from '~/components/BottomBar'
 
 export default {
-  mixins: [redirect],
-
   components: {
     BottomBar,
   },
+  mixins: [redirect],
 
   data() {
     return {
@@ -95,15 +114,24 @@ export default {
         password: '',
         passwordFieldType: 'password',
       },
+      upload: {
+        file: '',
+      },
+      image_profil: '',
     }
   },
   beforeMount() {
     this.getCountBooks()
+    this.getAvatarUser()
   },
   methods: {
     async getCountBooks() {
       await this.$axios
-        .$get(`/user/books/count/${this.$store.state.user.user.id}`)
+        .$get(`/user/books/count/${this.$store.state.user.user.id}`, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
         .then((result) => {
           if (result.data.userbookscount) {
             this.countBook = result.data.userbookscount
@@ -125,6 +153,7 @@ export default {
         {
           headers: {
             Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+            'Content-Type': 'multipart/form-data',
           },
         }
       )
@@ -144,7 +173,50 @@ export default {
           })
       }
     },
-
+    async upload_image() {
+      const data = new FormData()
+      data.append('file', this.upload.file)
+      await this.$axios
+        .post(`/user/avatar/${this.$store.state.user.user.id}`, data, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
+        .then((result) => {
+          if (result.data.data !== null) {
+            window.console.log('Upload success')
+            this.getAvatarUser()
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    addImage() {
+      document.getElementById('upload').click()
+    },
+    ImageChange(event) {
+      this.upload.file = event.target.files[0]
+      this.upload_image()
+    },
+    async getAvatarUser() {
+      await this.$axios
+        .$get(`/user/${this.$store.state.user.user.id}`, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
+        .then((result) => {
+          if (result === undefined) {
+            this.image_profil = 'https://placekitten.com/300/300'
+          } else {
+            this.image_profil = result.avatar
+          }
+        })
+        .catch((error) => {
+          window.console.log(error)
+        })
+    },
   },
 }
 </script>

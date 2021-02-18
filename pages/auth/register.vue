@@ -41,7 +41,7 @@
           id="input-3"
           v-model="password"
           type="password"
-          :state="this.chackPassword1"
+          :state="chackPassword1"
           name="password"
           required
           placeholder="Enter password"
@@ -57,7 +57,7 @@
           id="input-4"
           v-model="passwordConfirmation"
           type="password"
-          :state="this.chackPassword2"
+          :state="chackPassword2"
           name="passwordConfirmation"
           required
           placeholder="Enter password confirmation"

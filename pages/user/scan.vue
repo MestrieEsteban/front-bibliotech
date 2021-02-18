@@ -13,12 +13,11 @@ import BottomBar from '@/components/BottomBar'
 import redirect from '../../mixins/redirectLogin'
 
 export default {
-  mixins: [redirect],
-
   components: {
     MenuScan,
     BottomBar,
   },
+  mixins: [redirect],
 }
 </script>
 
