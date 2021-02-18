@@ -2,11 +2,13 @@
   <div>
     <b-container>
       <h1 id="title">My books</h1>
-      <Search />
+      <div v-if="book_user !== ''">
+        <Search :msg="term" @messageChanged="search($event)"></Search>
+      </div>
       <div id="container"></div>
       <b-row v-if="book_user !== ''">
         <b-col
-          v-for="item in book_user"
+          v-for="item in book_filter"
           id="cols-books"
           :key="item.id"
           col
@@ -27,7 +29,7 @@
 </template>
 
 <script>
-import Search from '~/components/search'
+import Search from '@/components/Search'
 import BottomBar from '~/components/BottomBar'
 
 export default {
@@ -37,9 +39,10 @@ export default {
   },
   data() {
     return {
-      id: 1,
       book: '',
       book_user: '',
+      book_filter: '',
+      term: '',
     }
   },
   mounted() {
@@ -48,18 +51,29 @@ export default {
   methods: {
     async getBook() {
       await this.$axios
-        .$get(`user/books/${this.id}`)
+        .$get(`user/books/${this.$store.state.user.user.id}`)
         .then((result) => {
           this.book = result.data.userbooks
-          for (let i = 0; this.book.length; i++) {
-            if (result.data.userbooks[i].isBiblio) {
-              this.book_user = result.data.userbooks[i].books
+          if (this.book.length > 0) {
+            for (let i = 0; this.book.length; i++) {
+              if (this.book[i].isBiblio && this.book[i].books.length > 0) {
+                this.book_user =  this.book[i].books
+                this.book_filter = this.book[i].books
+              }
             }
           }
         })
         .catch((error) => {
           window.console.log(error)
         })
+    },
+    search(event) {
+      this.term = event
+      this.term !== ''
+        ? (this.book_filter = this.book_user.filter((book) =>
+            book.title.toLowerCase().match(this.term.toLowerCase())
+          ))
+        : (this.book_filter = this.book_user)
     },
   },
 }

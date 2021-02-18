@@ -2,11 +2,13 @@
   <div>
     <b-container>
       <h1 id="title">Wish Books</h1>
-      <Search />
+      <div v-if="whist_user !== ''">
+        <Search :msg="term" @messageChanged="search($event)"></Search>
+      </div>
       <div id="container"></div>
-      <b-row v-if="whist_book !== ''">
+      <b-row v-if="whist_user !== ''">
         <b-col
-          v-for="item in whist_book"
+          v-for="item in whist_filter"
           id="cols-books"
           :key="item.id"
           col
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-import Search from '~/components/search'
+import Search from '@/components/Search'
 import BottomBar from '~/components/BottomBar'
 
 export default {
@@ -35,9 +37,10 @@ export default {
   },
   data() {
     return {
-      id: 1,
       book: '',
-      whist_book: '',
+      whist_user: '',
+      whist_filter: '',
+      term: '',
     }
   },
   mounted() {
@@ -46,18 +49,29 @@ export default {
   methods: {
     async getBook() {
       await this.$axios
-        .$get(`user/books/${this.id}`)
+        .$get(`user/books/${this.$store.state.user.user.id}`)
         .then((result) => {
           this.book = result.data.userbooks
-          for (let i = 0; this.book.length; i++) {
-            if (!result.data.userbooks[i].isBiblio) {
-              this.whist_book = result.data.userbooks[i].books
+          if (this.book.length > 0) {
+            for (let i = 0; this.book.length; i++) {
+              if (!this.book[i].isBiblio && this.book[i].books.length > 0) {
+                this.whist_user = this.book[i].books
+                this.whist_filter = this.book[i].books
+              }
             }
           }
         })
         .catch((error) => {
           window.console.log(error)
         })
+    },
+    search(event) {
+      this.term = event
+      this.term !== ''
+        ? (this.whist_filter = this.whist_user.filter((book) =>
+            book.title.toLowerCase().match(this.term.toLowerCase())
+          ))
+        : (this.whist_filter = this.whist_user)
     },
   },
 }

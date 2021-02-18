@@ -18,8 +18,8 @@
           ></b-button>
         </span>
       </a>
-      <a href="/whishlist">
-        <div id="whishlist">
+      <a href="/wishlist">
+        <div id="wishlist">
           <i class="fas fa-bookmark"></i>
         </div>
       </a>
@@ -48,7 +48,7 @@
 }
 #home,
 #book_btn,
-#whishlist,
+#wishlist,
 #profil {
   display: inline-block;
   background-color: #fd8369;
