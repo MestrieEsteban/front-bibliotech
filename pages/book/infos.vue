@@ -104,7 +104,11 @@ export default {
     async getBook() {
       const isbn = this.$route.query.isbn
       await this.$axios
-        .$get(`/books/search/${isbn}`)
+        .$get(`/books/search/${isbn}`, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
         .then((result) => {
           if (result.data) {
             this.book = result.data.books[0]
@@ -120,7 +124,11 @@ export default {
     async getAuthor() {
       await this.getBook()
       await this.$axios
-        .$get(`/books/by/${this.book.author}`)
+        .$get(`/books/by/${this.book.author}` , {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
         .then((result) => {
           if (result.data.books) {
             this.bookAuthor = result.data.books

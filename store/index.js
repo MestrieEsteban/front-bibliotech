@@ -41,7 +41,7 @@ const createStore = () => {
             setAuthToken(response.data.data.meta.token)
             cookies.set('x-access-token', response.data.data.meta.token, {
               expires: 7,
-            })
+			})
             return response
           } catch (error) {
             console.log(response)

@@ -65,7 +65,7 @@ export default {
 
   logRocket: {
     logRocketId: 'efrei/bibliotech',
-    devModeAllowed: false,
+    devModeAllowed: true,
   },
 
   axios: {
