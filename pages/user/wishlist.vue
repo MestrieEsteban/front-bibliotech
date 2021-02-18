@@ -70,7 +70,7 @@ export default {
     },
     search(event) {
       this.term = event
-      if (this.book_filter !== '') {
+      if (this.whist_filter !== '') {
         this.term !== ''
           ? (this.whist_filter = this.whist_user.filter((book) =>
               book.title.toLowerCase().match(this.term.toLowerCase())

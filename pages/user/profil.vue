@@ -207,7 +207,8 @@ export default {
           },
         })
         .then((result) => {
-          if (result === undefined) {
+          this.image_profil = result
+          if (result === '') {
             this.image_profil = 'https://placekitten.com/300/300'
           } else {
             this.image_profil = result.avatar
