@@ -6,9 +6,9 @@
           <span>
             <div id="text-color1">Good</div>
             <div id="text-color2">{{ hour_time }}</div>
-            <!-- <div id="text-color3" v-if="$store.state.user !== ''">
+            <div id="text-color3" v-if="$store.state.user !== ''">
               {{ $store.state.user.user.nickname }}
-            </div>-->
+            </div>
           </span>
         </div>
         <div class="container-image">
@@ -17,18 +17,24 @@
       </div>
       <Search />
       <h1 id="title">Last Books</h1>
-      <vue-horizontal-list
-        :items="book_user"
-        :options="{ responsive: [{ size: 0 }] }"
-      >
-        <template #default="{ item }">
-          <div
-            id="book"
-            :style="{ backgroundImage: 'url(' + item.cover + ')' }"
-          ></div>
-          <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
-        </template>
-      </vue-horizontal-list>
+      <b-row>
+        <div style="max-width: 90%; margin-left: 15px;">
+          <vue-horizontal-list
+            :items="book_user"
+            :options="{ responsive: [{ size: 0 }] }"
+          >
+            <template #default="{ item }">
+              <a :href="`/book/infos?isbn=${item.isbn}`">
+                <div
+                  id="book"
+                  :style="{ backgroundImage: 'url(' + item.cover + ')' }"
+                ></div
+              ></a>
+              <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
+            </template>
+          </vue-horizontal-list>
+        </div>
+      </b-row>
       <br />
     </b-container>
     <BottomBar />
@@ -62,7 +68,7 @@ export default {
       await this.$axios
         .$get(`user/books/last/${this.id}`)
         .then((result) => {
-          this.book_user = result.data.userbookslast
+          this.book_user = result.data.userbookslast.reverse()
         })
         .catch((error) => {
           window.console.log(error)
@@ -72,11 +78,11 @@ export default {
       const date = new Date()
       const time = `${date.getHours()}`
       if (time < 12) {
-        this.hour_time = 'Morning'
+        this.hour_time = 'Morning,'
       } else if (time >= 12 && time <= 17) {
-        this.hour_time = 'Afternoon'
+        this.hour_time = 'Afternoon,'
       } else if (time >= 17 && time <= 24) {
-        this.hour_time = 'Evening'
+        this.hour_time = 'Evening,'
       }
     },
   },
@@ -120,17 +126,19 @@ img {
 .container_text {
   font-size: 20px;
   padding-left: 20px;
-  margin-right: 10%;
+  margin-right: 20%;
 }
 
 #text-color1,
 #text-color2 {
   color: #28d063;
   font-size: 15px;
+  letter-spacing: 3px;
 }
 
 #text-color3 {
   color: #34334b;
   font-size: 18px;
+  letter-spacing: 3px;
 }
 </style>

@@ -55,6 +55,7 @@
   border: 2px solid #fd8369;
   border-radius: 20px 20px 0px 0px;
   width: 17%;
+  color: #34334b;
 }
 
 #btn_scan {

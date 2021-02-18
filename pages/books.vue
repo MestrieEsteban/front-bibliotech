@@ -2,8 +2,8 @@
   <div>
     <b-container>
       <h1 id="title">My books</h1>
-      <div v-if="book_user !== ''">
         <Search :msg="term" @messageChanged="search($event)"></Search>
+      <div v-if="book_user !== ''">
       </div>
       <div id="container"></div>
       <b-row v-if="book_user !== ''">
@@ -14,10 +14,12 @@
           col
           lg="1.5"
         >
-          <div
-            id="book"
-            :style="{ backgroundImage: 'url(' + item.cover + ')' }"
-          ></div>
+          <a :href="`/book/infos?isbn=${item.isbn}`">
+            <div
+              id="book"
+              :style="{ backgroundImage: 'url(' + item.cover + ')' }"
+            ></div>
+          </a>
           <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
         </b-col>
       </b-row>
