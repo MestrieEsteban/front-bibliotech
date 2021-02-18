@@ -15,8 +15,8 @@
           <img src="@/assets/svg/reading-corner-colour_1.svg" />
         </div>
       </div>
-      <Search />
-      <h1 id="title">Last Books</h1>
+      <Search :msg="term" @messageChanged="search($event)"></Search>
+      <h1 id="title">{{ title }}</h1>
       <b-row>
         <div style="max-width: 90%; margin-left: 15px;">
           <vue-horizontal-list
@@ -60,6 +60,9 @@ export default {
     return {
       book_user: [],
       hour_time: '',
+      term: '',
+      awaitingSearch: false,
+      title: 'Last Books',
     }
   },
   mounted() {
@@ -90,6 +93,34 @@ export default {
         this.hour_time = 'Afternoon,'
       } else if (time >= 17 && time <= 24) {
         this.hour_time = 'Evening,'
+      }
+    },
+    search(event) {
+      this.term = event
+      if (this.term == '') {
+        this.title = 'Last Books'
+		this.getBook()
+      } else {
+        if (!this.awaitingSearch) {
+          setTimeout(async () => {
+            console.log(this.term)
+            this.awaitingSearch = false
+            await this.$axios
+              .$get(`/books/by/${this.term}`, {
+                headers: {
+                  Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+                },
+              })
+              .then((result) => {
+                this.book_user = result.data.books
+                this.title = 'Search'
+              })
+              .catch((error) => {
+                window.console.log(error)
+              })
+          }, 1000)
+        }
+        this.awaitingSearch = true
       }
     },
   },
