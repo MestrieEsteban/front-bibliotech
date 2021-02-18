@@ -2,9 +2,8 @@
   <div>
     <b-container>
       <h1 id="title">Wish Books</h1>
-        <Search :msg="term" @messageChanged="search($event)"></Search>
-      <div v-if="whist_user !== ''">
-      </div>
+      <Search :msg="term" @messageChanged="search($event)"></Search>
+      <div v-if="whist_user !== ''"></div>
       <div id="container"></div>
       <b-row v-if="whist_user !== ''">
         <b-col

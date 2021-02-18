@@ -6,11 +6,11 @@
           variant="info"
           src="https://placekitten.com/300/300"
           size="5.5rem"
-          style="border: 2px solid #34334b;"
+          style="border: 2px solid #34334b"
         ></b-avatar>
         <br />
         <div v-if="$store.state.user" right>
-          <span style="color: #34334b !important; font-size: 25px;">{{
+          <span style="color: #34334b !important; font-size: 25px">{{
             $store.state.user.user.nickname
           }}</span>
         </div>
@@ -18,21 +18,21 @@
         <b-img
           src="../../assets/svg/undraw_Bibliophile_hwqc_1.svg"
           fluid
-          style="width: 280px;"
+          style="width: 280px"
           alt="Responsive image"
         ></b-img>
         <br />
-        <span style="color: #34334b !important; font-size: 4.5vw;"
+        <span style="color: #34334b !important; font-size: 4.5vw"
           >{{ countBook }} {{ countBook > 0 ? 'Books' : 'Book' }}</span
         >
       </div>
-	  <br />
+      <br />
       <b-form>
         <b-form-group id="input-group-2">
           <b-form-input
             id="input-2"
-            disabled
             v-model="form.email"
+            disabled
             type="email"
             placeholder="Enter email"
             required
@@ -123,7 +123,7 @@ export default {
           },
         }
       )
-      if (result.data == 'User modified') {
+      if (result.data === 'User modified') {
         await this.$store
           .dispatch('login', {
             email: this.form.email,

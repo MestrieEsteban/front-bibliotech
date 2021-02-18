@@ -7,7 +7,7 @@
     </svg>
     <svg
       class="dbrScanner-bg-camera"
-      style="display: none;"
+      style="display: none"
       viewBox="0 0 2048 1792"
     >
       <path
@@ -17,11 +17,11 @@
     <video class="dbrScanner-video" playsinline="true"></video>
     <canvas class="dbrScanner-cvs-drawarea"></canvas>
     <div class="dbrScanner-cvs-scanarea">
-      <div class="dbrScanner-scanlight" style="display: none;"></div>
+      <div class="dbrScanner-scanlight" style="display: none"></div>
     </div>
-	<div>
-		<b-form-select class="dbrScanner-sel-camera"></b-form-select>
-	</div>
+    <div>
+      <b-form-select class="dbrScanner-sel-camera"></b-form-select>
+    </div>
   </div>
 </template>
 
@@ -80,7 +80,7 @@ export default {
   height: 100%;
   min-width: 100%;
   min-height: 480px;
-  background: #F5F3F9;
+  background: #f5f3f9;
   position: relative;
   resize: both;
 }

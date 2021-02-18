@@ -22,7 +22,12 @@ export default {
     mdbIcon,
     mdbFormInline,
   },
-  props: ['search'],
+  props: {
+    search: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       term: '',
@@ -41,7 +46,7 @@ export default {
 #border_search {
   border-radius: 20px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 input {
@@ -51,7 +56,7 @@ input {
   vertical-align: middle;
   border: none;
   outline: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-size: 12px;
 }
 
@@ -61,8 +66,8 @@ input {
 }
 
 #icon_color {
-  background-color: #FFFFFF;
-  color: #28D063;
+  background-color: #ffffff;
+  color: #28d063;
 }
 
 #espacement {
