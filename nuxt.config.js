@@ -51,7 +51,6 @@ export default {
 		'@nuxtjs/axios',
 		'mdbvue/nuxt',
 		'@nuxtjs/pwa',
-
 	],
 
 	bootstrapVue: {

@@ -22,13 +22,18 @@
         </b-row>
 
         <b-row id="center">
-          <b-button id="btn"
-            ><i class="fas fa-book-reader"></i> Ajouter</b-button
+          <b-button id="btn" @click="addBook('true')"
+            ><i class="fas fa-book-reader"></i
+            ><span style="margin-left: 15px;">Add</span></b-button
           >
-          <b-button id="btn"><i class="fas fa-bookmark"></i> Ajouter</b-button>
+          <b-button id="btn" @click="addBook('false')"
+            ><i class="fas fa-bookmark"></i
+            ><span style="margin-left: 15px;">Add</span></b-button
+          >
           <div v-if="book.sale != null">
             <b-button :href="book.sale" target="_blank" id="btn"
-              ><i class="fas fa-shopping-cart"></i> Acheter</b-button
+              ><i class="fas fa-shopping-cart"></i
+              ><span style="margin-left: 15px;">Buy</span></b-button
             >
           </div>
         </b-row>
@@ -120,6 +125,37 @@ export default {
         .then((result) => {
           if (result.data.books) {
             this.bookAuthor = result.data.books
+          }
+        })
+        .catch((error) => {
+          window.console.log(error)
+        })
+    },
+    async addBook(isBiblio) {
+      const isbn = this.$route.query.isbn
+      const data = {
+        uuid: this.$store.state.user.user.id,
+        isbn: isbn,
+        type: isBiblio,
+      }
+      await this.$axios
+        .$post(`/user/books`, data, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
+        .then((result) => {
+			console.log(result.data.userbooks);
+          if (result.data.userbooks) {
+            this.$bvToast.toast(
+              `The book ${this.book.title} was added in ${isBiblio === "true" ? 'my book': 'wishlist'}`,
+              {
+                title: 'Book added',
+                autoHideDelay: 4000,
+                variant: 'success',
+                appendToast: false,
+              }
+            )
           }
         })
         .catch((error) => {
