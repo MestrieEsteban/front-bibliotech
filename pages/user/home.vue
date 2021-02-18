@@ -18,7 +18,7 @@
       <Search :msg="term" @messageChanged="search($event)"></Search>
       <h1 id="title">{{ title }}</h1>
       <b-row>
-        <div style="max-width: 90%; margin-left: 15px;">
+        <div style="max-width: 90%; margin-left: 15px">
           <vue-horizontal-list
             :items="book_user"
             :options="{ responsive: [{ size: 0 }] }"
@@ -48,13 +48,12 @@ import BottomBar from '@/components/BottomBar'
 import redirect from '../../mixins/redirectLogin'
 
 export default {
-  mixins: [redirect],
-
   components: {
     Search,
     BottomBar,
     VueHorizontalList,
   },
+  mixins: [redirect],
 
   data() {
     return {

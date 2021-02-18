@@ -45,7 +45,19 @@ export default {
       const data = {
         email: this.email,
       }
-      await this.$axios.post(`utils/resetpassword`, data)
+      const result = await this.$axios.post(`auth/resetpassword`, data)
+      console.log (result)
+      if (result) {
+        this.$bvToast.toast(
+              `Mail was sended `+ this.email,
+              {
+                title: 'Mail send',
+                autoHideDelay: 4000,
+                variant: 'success',
+                appendToast: false,
+              }
+            )
+      }
     },
   },
 }

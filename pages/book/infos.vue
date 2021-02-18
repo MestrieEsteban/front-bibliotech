@@ -82,12 +82,14 @@
 </template>
 
 <script>
+import redirect from '../../mixins/redirectLogin'
 import BottomBar from '~/components/BottomBar'
 
 export default {
   components: {
     BottomBar,
   },
+  mixins: [redirect],
   data() {
     return {
       id: 1,
