@@ -98,7 +98,7 @@ export default {
   methods: {
     async getCountBooks() {
       await this.$axios
-        .$get(`/user/books/count/1`)
+        .$get(`/user/books/count/${this.$store.state.user.user.id}`)
         .then((result) => {
           if (result.data.userbookscount) {
             this.countBook = result.data.userbookscount
@@ -139,6 +139,7 @@ export default {
           })
       }
     },
+
   },
 }
 </script>
