@@ -70,11 +70,13 @@ export default {
     },
     search(event) {
       this.term = event
-      this.term !== ''
-        ? (this.whist_filter = this.whist_user.filter((book) =>
-            book.title.toLowerCase().match(this.term.toLowerCase())
-          ))
-        : (this.whist_filter = this.whist_user)
+      if (this.book_filter !== '') {
+        this.term !== ''
+          ? (this.whist_filter = this.whist_user.filter((book) =>
+              book.title.toLowerCase().match(this.term.toLowerCase())
+            ))
+          : (this.whist_filter = this.whist_user)
+      }
     },
   },
 }

@@ -72,11 +72,13 @@ export default {
     },
     search(event) {
       this.term = event
-      this.term !== ''
-        ? (this.book_filter = this.book_user.filter((book) =>
-            book.title.toLowerCase().match(this.term.toLowerCase())
-          ))
-        : (this.book_filter = this.book_user)
+      if (this.book_filter !== '') {
+        this.term !== ''
+          ? (this.book_filter = this.book_user.filter((book) =>
+              book.title.toLowerCase().match(this.term.toLowerCase())
+            ))
+          : (this.book_filter = this.book_user)
+      }
     },
   },
 }
