@@ -103,7 +103,7 @@ export default {
   methods: {
     async getCountBooks() {
       await this.$axios
-        .$get(`/user/books/count/1`, {
+        .$get(`/user/books/count/${this.$store.state.user.user.id}`, {
           headers: {
             Authorization: `Bearer ${this.$store.state.user.meta.token}`,
           },
@@ -148,6 +148,7 @@ export default {
           })
       }
     },
+
   },
 }
 </script>

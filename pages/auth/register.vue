@@ -41,7 +41,7 @@
           id="input-3"
           v-model="password"
           type="password"
-          :state="chackPassword1"
+          :state="this.chackPassword1"
           name="password"
           required
           placeholder="Enter password"
@@ -57,7 +57,7 @@
           id="input-4"
           v-model="passwordConfirmation"
           type="password"
-          :state="chackPassword2"
+          :state="this.chackPassword2"
           name="passwordConfirmation"
           required
           placeholder="Enter password confirmation"
@@ -128,22 +128,22 @@ export default {
           }
         })
     },
-  },
-  chackPassword1() {
-    return this.password.length > 0
-  },
-  chackPassword2() {
-    if (this.passwordConfirmation.length > 0) {
-      if (this.password === this.passwordConfirmation) {
-        this.passShow = false
-        return true
+    chackPassword1() {
+      return this.password.length > 0
+    },
+    chackPassword2() {
+      if (this.passwordConfirmation.length > 0) {
+        if (this.password === this.passwordConfirmation) {
+          this.passShow = false
+          return this.passShow
+        } else {
+          this.passShow = true
+          return this.passShow
+        }
       } else {
-        this.passShow = true
         return false
       }
-    } else {
-      return false
-    }
+    },
   },
 }
 </script>
