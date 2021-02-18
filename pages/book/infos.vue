@@ -42,7 +42,6 @@
             <span id="description">{{ book.description }}</span>
           </b-col>
         </b-row>
-
         <b-row style="margin-top: 30px">
           <b-col style="text-align: left">
             <span id="bta">By This Author</span>
