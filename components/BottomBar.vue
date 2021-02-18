@@ -1,24 +1,24 @@
 <template>
   <div id="footer">
     <div id="bordures">
-      <a href="/home">
+      <a href="/user/home">
         <div id="home">
           <i class="fas fa-home"></i>
         </div>
       </a>
-      <a href="/books">
+      <a href="/user/books">
         <div id="book_btn">
           <i class="fas fa-book-reader"></i>
         </div>
       </a>
-      <a href="/scan">
+      <a href="/user/scan">
         <span id="scan">
           <b-button id="btn_scan"
             ><i id="icons-plus" class="fas fa-plus"></i
           ></b-button>
         </span>
       </a>
-      <a href="/wishlist">
+      <a href="/user/wishlist">
         <div id="wishlist">
           <i class="fas fa-bookmark"></i>
         </div>

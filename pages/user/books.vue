@@ -1,22 +1,24 @@
 <template>
   <div>
     <b-container>
-      <h1 id="title">Wish Books</h1>
+      <h1 id="title">My books</h1>
       <Search :msg="term" @messageChanged="search($event)"></Search>
-      <div v-if="whist_user !== ''"></div>
+      <div v-if="book_user !== ''"></div>
       <div id="container"></div>
-      <b-row v-if="whist_user !== ''">
+      <b-row v-if="book_user !== ''">
         <b-col
-          v-for="item in whist_filter"
+          v-for="item in book_filter"
           id="cols-books"
           :key="item.id"
           col
           lg="1.5"
         >
-          <div
-            id="book"
-            :style="{ backgroundImage: 'url(' + item.cover + ')' }"
-          ></div>
+          <a :href="`/book/infos?isbn=${item.isbn}`">
+            <div
+              id="book"
+              :style="{ backgroundImage: 'url(' + item.cover + ')' }"
+            ></div>
+          </a>
           <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
         </b-col>
       </b-row>
@@ -27,7 +29,7 @@
 
 <script>
 import Search from '@/components/Search'
-import BottomBar from '~/components/BottomBar'
+import BottomBar from '@/components/BottomBar'
 
 export default {
   components: {
@@ -37,8 +39,8 @@ export default {
   data() {
     return {
       book: '',
-      whist_user: '',
-      whist_filter: '',
+      book_user: '',
+      book_filter: '',
       term: '',
     }
   },
@@ -48,13 +50,17 @@ export default {
   methods: {
     async getBook() {
       await this.$axios
-        .$get(`user/books/${this.$store.state.user.user.id}`)
+        .$get(`user/books/${this.$store.state.user.user.id}`, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
         .then((result) => {
           this.book = result.data.userbooks
           for (let i = 0; i < this.book.length; i++) {
-            if (!this.book[i].isBiblio && this.book[i].books.length > 0) {
-              this.whist_user = this.book[i].books
-              this.whist_filter = this.book[i].books
+            if (this.book[i].isBiblio && this.book[i].books.length > 0) {
+              this.book_user = this.book[i].books
+              this.book_filter = this.book[i].books
             }
           }
         })
@@ -65,10 +71,10 @@ export default {
     search(event) {
       this.term = event
       this.term !== ''
-        ? (this.whist_filter = this.whist_user.filter((book) =>
+        ? (this.book_filter = this.book_user.filter((book) =>
             book.title.toLowerCase().match(this.term.toLowerCase())
           ))
-        : (this.whist_filter = this.whist_user)
+        : (this.book_filter = this.book_user)
     },
   },
 }

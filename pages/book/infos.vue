@@ -24,16 +24,16 @@
         <b-row id="center">
           <b-button id="btn" @click="addBook('true')"
             ><i class="fas fa-book-reader"></i
-            ><span style="margin-left: 15px;">Add</span></b-button
+            ><span style="margin-left: 15px">Add</span></b-button
           >
           <b-button id="btn" @click="addBook('false')"
             ><i class="fas fa-bookmark"></i
-            ><span style="margin-left: 15px;">Add</span></b-button
+            ><span style="margin-left: 15px">Add</span></b-button
           >
           <div v-if="book.sale != null">
-            <b-button :href="book.sale" target="_blank" id="btn"
+            <b-button id="btn" :href="book.sale" target="_blank"
               ><i class="fas fa-shopping-cart"></i
-              ><span style="margin-left: 15px;">Buy</span></b-button
+              ><span style="margin-left: 15px">Buy</span></b-button
             >
           </div>
         </b-row>
@@ -134,7 +134,7 @@ export default {
       const isbn = this.$route.query.isbn
       const data = {
         uuid: this.$store.state.user.user.id,
-        isbn: isbn,
+        isbn,
         type: isBiblio,
       }
       await this.$axios
@@ -144,10 +144,12 @@ export default {
           },
         })
         .then((result) => {
-			console.log(result.data.userbooks);
+          window.console.log(result.data.userbooks)
           if (result.data.userbooks) {
             this.$bvToast.toast(
-              `The book ${this.book.title} was added in ${isBiblio === "true" ? 'my book': 'wishlist'}`,
+              `The book ${this.book.title} was added in ${
+                isBiblio === 'true' ? 'my book' : 'wishlist'
+              }`,
               {
                 title: 'Book added',
                 autoHideDelay: 4000,
