@@ -9,7 +9,7 @@
 
 <script>
 import MenuScan from '@/components/MenuScan'
-import BottomBar from '~/components/BottomBar'
+import BottomBar from '@/components/BottomBar'
 
 export default {
   components: {

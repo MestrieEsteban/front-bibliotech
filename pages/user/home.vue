@@ -44,7 +44,7 @@
 <script>
 import VueHorizontalList from 'vue-horizontal-list'
 import Search from '@/components/Search'
-import BottomBar from '~/components/BottomBar'
+import BottomBar from '@/components/BottomBar'
 
 export default {
   components: {
@@ -54,7 +54,6 @@ export default {
   },
   data() {
     return {
-      id: 1,
       book_user: [],
       hour_time: '',
     }
@@ -66,7 +65,11 @@ export default {
   methods: {
     async getBook() {
       await this.$axios
-        .$get(`user/books/last/${this.id}`)
+        .$get(`user/books/last/${this.$store.state.user.user.id}`, {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        })
         .then((result) => {
           this.book_user = result.data.userbookslast.reverse()
         })
