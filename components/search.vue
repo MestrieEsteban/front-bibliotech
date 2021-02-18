@@ -22,7 +22,8 @@ export default {
 <style>
 #border_search {
   border-radius: 20px;
-  background-color: #e5e5e5;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: #FFFFFF;
 }
 
 input {
@@ -32,7 +33,7 @@ input {
   vertical-align: middle;
   border: none;
   outline: none;
-  background-color: #e5e5e5;
+  background-color: #FFFFFF;
 }
 
 ::placeholder {
@@ -41,7 +42,8 @@ input {
 }
 
 #icon_color {
-  background-color: #f3f5f9;
+  background-color: #FFFFFF;
+  color: #28D063;
 }
 
 #espacement {

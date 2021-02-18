@@ -9,11 +9,11 @@
           style="border: 2px solid #34334b;"
         ></b-avatar>
         <br />
-        <b-div v-if="$store.state.user" right>
+        <div v-if="$store.state.user" right>
           <span style="color: #34334b !important; font-size: 25px;">{{
             $store.state.user.user.nickname
           }}</span>
-        </b-div>
+        </div>
         <br />
         <b-img
           src="../../assets/svg/undraw_Bibliophile_hwqc_1.svg"
@@ -21,9 +21,55 @@
           style="width: 280px;"
           alt="Responsive image"
         ></b-img>
-		<br />
-		<span style="color: #34334b !important; font-size: 4.5vw;">{{countBook}} {{countBook > 0 ? "Books":"Book"}}</span>
+        <br />
+        <span style="color: #34334b !important; font-size: 4.5vw;"
+          >{{ countBook }} {{ countBook > 0 ? 'Books' : 'Book' }}</span
+        >
       </div>
+	  <br />
+      <b-form>
+        <b-form-group id="input-group-2">
+          <b-form-input
+            id="input-2"
+            disabled
+            v-model="form.email"
+            type="email"
+            placeholder="Enter email"
+            required
+          ></b-form-input>
+        </b-form-group>
+        <b-form-group id="input-group-1">
+          <b-form-input
+            id="input-1"
+            v-model="form.nickname"
+            type="text"
+            placeholder="Enter nickname"
+            required
+          ></b-form-input>
+        </b-form-group>
+        <b-form-group id="input-group-3">
+          <b-form-input
+            id="input-3"
+            v-model="form.password"
+            placeholder="Enter password"
+            :type="form.passwordFieldType"
+            required
+          >
+          </b-form-input>
+          <br />
+          <div class="user">
+            <b-button
+              style="
+                background-color: #fd8369 !important;
+                border: 0;
+                color: #34334b;
+              "
+              @click="EditUser"
+              >Edit user</b-button
+            >
+          </div>
+        </b-form-group>
+      </b-form>
     </b-container>
     <BottomBar />
   </div>
@@ -38,6 +84,12 @@ export default {
   data() {
     return {
       countBook: 0,
+      form: {
+        nickname: this.$store.state.user.user.nickname,
+        email: this.$store.state.user.user.email,
+        password: '',
+        passwordFieldType: 'password',
+      },
     }
   },
   beforeMount() {
@@ -55,6 +107,37 @@ export default {
         .catch((error) => {
           window.console.log(error)
         })
+    },
+    async EditUser() {
+      const data = {
+        nickname: this.form.nickname,
+        email: this.form.email,
+        password: this.form.password,
+      }
+      const result = await this.$axios.put(
+        `user/${this.$store.state.user.user.id}`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
+          },
+        }
+      )
+      if (result.data == 'User modified') {
+        await this.$store
+          .dispatch('login', {
+            email: this.form.email,
+            password: this.form.password,
+          })
+          .then((result) => {
+            if (result.data.message) {
+              alert(result.data.message)
+              return
+            }
+            this.loading = false
+            this.$router.push('/user/profil')
+          })
+      }
     },
   },
 }

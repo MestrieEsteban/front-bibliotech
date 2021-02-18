@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <b-div v-if="book !== ''">
+      <div v-if="LoadBook == 'ok'">
         <b-row id="center">
           <b-col cols="*">
             <div
@@ -23,28 +23,28 @@
 
         <b-row id="center">
           <b-button id="btn"
-            ><i class="fas fa-book-reader"></i>  Ajouter</b-button
+            ><i class="fas fa-book-reader"></i> Ajouter</b-button
           >
-          <b-button id="btn"><i class="fas fa-bookmark"></i>  Ajouter</b-button>
+          <b-button id="btn"><i class="fas fa-bookmark"></i> Ajouter</b-button>
           <div v-if="book.sale != null">
             <b-button :href="book.sale" target="_blank" id="btn"
-              ><i class="fas fa-shopping-cart"></i>  Acheter</b-button
+              ><i class="fas fa-shopping-cart"></i> Acheter</b-button
             >
           </div>
         </b-row>
         <b-row id="center">
-          <b-col style="text-align: center">
+          <b-col style="text-align: center;">
             <span id="description">{{ book.description }}</span>
           </b-col>
         </b-row>
 
-        <b-row style="margin-top: 30px">
-          <b-col style="text-align: left">
-            <span id="bta" >By This Author</span>
+        <b-row style="margin-top: 30px;">
+          <b-col style="text-align: left;">
+            <span id="bta">By This Author</span>
           </b-col>
         </b-row>
-        <b-row v-if="bookAuthor !== ''">
-          <b-div id="scrolling-wrapper">
+        <b-row v-if="bookAuthor !== 'ok'">
+          <div id="scrolling-wrapper">
             <b-col
               v-for="item in bookAuthor"
               id="cols-books"
@@ -57,13 +57,21 @@
                 :style="{ backgroundImage: 'url(' + item.cover + ')' }"
               ></div>
             </b-col>
-          </b-div>
+          </div>
         </b-row>
-	  </b-div>
-      	<b-div v-else>
-		  No book found
-	  	</b-div>
-	  
+      </div>
+      <div v-if="LoadBook == 'loading'">
+        <div>
+          <b-spinner class="m-5" label="Busy"></b-spinner>
+        </div>
+      </div>
+      <div v-if="LoadBook == 'noBook'">
+        <div class="m-5">
+          <span style="font-size: 30px; color: #34334b !important;"
+            >No book found</span
+          >
+        </div>
+      </div>
     </b-container>
     <BottomBar />
   </div>
@@ -80,6 +88,7 @@ export default {
     return {
       id: 1,
       book: '',
+      LoadBook: 'loading',
       bookAuthor: '',
       book_user: '',
     }
@@ -93,8 +102,11 @@ export default {
       await this.$axios
         .$get(`/books/search/${isbn}`)
         .then((result) => {
-          if (result.data.books) {
+          if (result.data) {
             this.book = result.data.books[0]
+            this.LoadBook = 'ok'
+          } else {
+            this.LoadBook = 'noBook'
           }
         })
         .catch((error) => {
@@ -108,7 +120,6 @@ export default {
         .then((result) => {
           if (result.data.books) {
             this.bookAuthor = result.data.books
-            window.console.log(this.book)
           }
         })
         .catch((error) => {

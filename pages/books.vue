@@ -12,10 +12,12 @@
           col
           lg="1.5"
         >
-          <div
-            id="book"
-            :style="{ backgroundImage: 'url(' + item.cover + ')' }"
-          ></div>
+          <a :href="`/book/infos?isbn=${item.isbn}`">
+            <div
+              id="book"
+              :style="{ backgroundImage: 'url(' + item.cover + ')' }"
+            ></div>
+          </a>
           <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
         </b-col>
       </b-row>
