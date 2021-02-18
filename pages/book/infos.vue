@@ -24,27 +24,26 @@
         <b-row id="center">
           <b-button id="btn" @click="addBook('true')"
             ><i class="fas fa-book-reader"></i
-            ><span style="margin-left: 15px">Add</span></b-button
+            ><span style="margin-left: 15px;">Add</span></b-button
           >
           <b-button id="btn" @click="addBook('false')"
             ><i class="fas fa-bookmark"></i
-            ><span style="margin-left: 15px">Add</span></b-button
+            ><span style="margin-left: 15px;">Add</span></b-button
           >
           <div v-if="book.sale != null">
             <b-button id="btn" :href="book.sale" target="_blank"
               ><i class="fas fa-shopping-cart"></i
-              ><span style="margin-left: 15px">Buy</span></b-button
+              ><span style="margin-left: 15px;">Buy</span></b-button
             >
           </div>
         </b-row>
         <b-row id="center">
-          <b-col style="text-align: center">
+          <b-col style="text-align: center;">
             <span id="description">{{ book.description }}</span>
           </b-col>
         </b-row>
-
-        <b-row style="margin-top: 30px">
-          <b-col style="text-align: left">
+        <b-row style="margin-top: 30px;">
+          <b-col style="text-align: left;">
             <span id="bta">By This Author</span>
           </b-col>
         </b-row>
@@ -72,7 +71,7 @@
       </div>
       <div v-if="LoadBook === 'noBook'">
         <div class="m-5">
-          <span style="font-size: 30px; color: #34334b !important"
+          <span style="font-size: 30px; color: #34334b !important;"
             >No book found</span
           >
         </div>
@@ -84,8 +83,11 @@
 
 <script>
 import BottomBar from '~/components/BottomBar'
+import redirect from '../../mixins/redirectLogin'
 
 export default {
+  mixins: [redirect],
+
   components: {
     BottomBar,
   },

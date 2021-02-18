@@ -30,8 +30,10 @@
 <script>
 import Search from '@/components/Search'
 import BottomBar from '@/components/BottomBar'
+import redirect from '../../mixins/redirectLogin'
 
 export default {
+ mixins: [redirect],
   components: {
     Search,
     BottomBar,
