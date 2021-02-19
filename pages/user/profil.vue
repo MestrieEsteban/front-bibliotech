@@ -223,8 +223,7 @@ export default {
           },
         })
         .then((result) => {
-          this.image_profil = result
-          if (result === '') {
+          if (result.avatar === null) {
             this.image_profil = 'https://placekitten.com/300/300'
           } else {
             this.image_profil = result.avatar
