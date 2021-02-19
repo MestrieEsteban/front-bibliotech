@@ -34,7 +34,7 @@
         <b-img
           src="@/assets/svg/undraw_Bibliophile_hwqc_1.svg"
           fluid
-          style="width: 280px"
+          style="width: 240px"
           alt="Responsive image"
         ></b-img>
         <br />
