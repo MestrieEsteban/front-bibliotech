@@ -86,6 +86,21 @@
               >Edit user</b-button
             >
           </div>
+
+          <div class="user2">
+            <b-button
+              style="
+                background-color: #fd8369 !important;
+                border: 0;
+                color: #34334b;
+                height: 5%;
+                width: 50%;
+                font-size: 12px;
+              "
+              @click="logOut"
+            >Log Out</b-button
+            >
+          </div>
         </b-form-group>
       </b-form>
     </b-container>
@@ -96,6 +111,7 @@
 </template>
 
 <script>
+import logout from '@/mixins/logout'
 import redirect from '../../mixins/redirectLogin'
 import BottomBar from '~/components/BottomBar'
 
@@ -103,7 +119,7 @@ export default {
   components: {
     BottomBar,
   },
-  mixins: [redirect],
+  mixins: [redirect, logout],
 
   data() {
     return {
@@ -237,6 +253,11 @@ export default {
   display: block;
   text-align: center;
   margin-top: 10px;
+}
+
+.user2 {
+  display: block;
+  text-align: center;
 }
 #center {
   margin-top: 10px;

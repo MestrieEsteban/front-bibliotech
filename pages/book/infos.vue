@@ -49,20 +49,20 @@
         </b-row>
         <b-row v-if="bookAuthor !== 'ok'">
           <b-col
-          v-for="item in bookAuthor"
-          id="cols-books"
-          :key="item.id"
-          col
-          lg="1.5"
-        >
-          <a :href="`/book/infos?isbn=${item.isbn}`">
-            <div
-              id="bookAuth"
-              :style="{ backgroundImage: 'url(' + item.cover + ')' }"
-            ></div>
-          </a>
-          <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
-        </b-col>
+            v-for="item in bookAuthor"
+            id="cols-books"
+            :key="item.id"
+            col
+            lg="1.5"
+          >
+            <a :href="`/book/infos?isbn=${item.isbn}`">
+              <div
+                id="bookAuth"
+                :style="{ backgroundImage: 'url(' + item.cover + ')' }"
+              ></div>
+            </a>
+            <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
+          </b-col>
         </b-row>
       </div>
       <div v-if="LoadBook === 'loading'">
@@ -127,7 +127,7 @@ export default {
     async getAuthor() {
       await this.getBook()
       await this.$axios
-        .$get(`/books/by/${this.book.author}` , {
+        .$get(`/books/by/${this.book.author}`, {
           headers: {
             Authorization: `Bearer ${this.$store.state.user.meta.token}`,
           },
@@ -210,7 +210,6 @@ export default {
   border-radius: 10px;
   background-size: cover;
   display: inline-block;
-  
 }
 #title {
   color: #34334b;
