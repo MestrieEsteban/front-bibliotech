@@ -18,8 +18,8 @@
       <Search :msg="term" @messageChanged="search($event)"></Search>
       <h1 id="title">{{ title }}</h1>
       <b-row>
-        <div style="max-width: 90%; margin-left: 15px">
-          <vue-horizontal-list
+        <div style="max-width: 90%; margin-left: 15px; min-width: 90%">
+          <vue-horizontal-list style="max-width: 90%; margin-left: 15px; min-width: 80%"
             :items="book_user"
             :options="{ responsive: [{ size: 0 }] }"
           >

@@ -48,20 +48,21 @@
           </b-col>
         </b-row>
         <b-row v-if="bookAuthor !== 'ok'">
-          <div id="scrolling-wrapper">
-            <b-col
-              v-for="item in bookAuthor"
-              id="cols-books"
-              :key="item.id"
-              col
-              lg="1.5"
-            >
-              <div
-                id="bookAuthor"
-                :style="{ backgroundImage: 'url(' + item.cover + ')' }"
-              ></div>
-            </b-col>
-          </div>
+          <b-col
+          v-for="item in bookAuthor"
+          id="cols-books"
+          :key="item.id"
+          col
+          lg="1.5"
+        >
+          <a :href="`/book/infos?isbn=${item.isbn}`">
+            <div
+              id="bookAuth"
+              :style="{ backgroundImage: 'url(' + item.cover + ')' }"
+            ></div>
+          </a>
+          <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
+        </b-col>
         </b-row>
       </div>
       <div v-if="LoadBook === 'loading'">
@@ -192,6 +193,15 @@ export default {
   background-size: cover;
   align-items: center;
 }
+#bookAuth {
+  border: 1px solid #34334b;
+  background-color: #34334b;
+  width: 110px;
+  height: 150px;
+  border-radius: 10px;
+  background-size: cover;
+  align-items: center;
+}
 #bookAuthor {
   border: 1px solid #34334b;
   background-color: #34334b;
@@ -200,6 +210,7 @@ export default {
   border-radius: 10px;
   background-size: cover;
   display: inline-block;
+  
 }
 #title {
   color: #34334b;
@@ -231,6 +242,7 @@ export default {
 }
 #cols-books {
   margin-top: 10px;
+  align-items: center;
 }
 
 #scrolling-wrapper {
