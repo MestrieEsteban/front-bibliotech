@@ -158,18 +158,17 @@ export default {
         })
     },
     async EditUser() {
-      const data = {
-        nickname: this.form.nickname,
+		const data = {
+			nickname: this.form.nickname,
         email: this.form.email,
         password: this.form.password,
       }
       const result = await this.$axios.put(
-        `user/${this.$store.state.user.user.id}`,
+		  `user/${this.$store.state.user.user.id}`,
         data,
         {
-          headers: {
-            Authorization: `Bearer ${this.$store.state.user.meta.token}`,
-            'Content-Type': 'multipart/form-data',
+			headers: {
+				Authorization: `Bearer ${this.$store.state.user.meta.token}`,
           },
         }
       )
@@ -181,7 +180,6 @@ export default {
           })
           .then((result) => {
             if (result.data.message) {
-              alert(result.data.message)
               return
             }
             this.loading = false
