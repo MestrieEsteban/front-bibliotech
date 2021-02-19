@@ -50,7 +50,7 @@
             <span id="bta">By This Author</span>
           </b-col>
         </b-row>
-        <b-row v-if="bookAuthor !== 'ok'">
+        <b-row v-if="bookAuthor !== 'ok'" style='margin-bottom: 20%'>
           <b-col
             v-for="item in bookAuthor"
             id="cols-books"
@@ -64,7 +64,7 @@
                 :style="{ backgroundImage: 'url(' + item.cover + ')' }"
               ></div>
             </a>
-            <span id="desc_book">{{ item.title.substr(0, 10) }}...</span>
+            <span id="desc_book">{{ item.title.substr(0, 15) }}...</span>
           </b-col>
         </b-row>
       </div>
